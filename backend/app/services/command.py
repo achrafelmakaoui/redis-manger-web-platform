@@ -1,9 +1,22 @@
-from . import commands
-from flask import jsonify, request, session
+import json
+from flask import jsonify
 
 
-@commands.route('/commands', methods=['GET'])
-def exec_command():
-    request_data = request.form
-    response =  jsonify(session["redis_host"])
-    return response
+class Command:
+    def __init__(self) -> None:
+        pass
+
+    @staticmethod
+    def exec_command(redis_conn, command):
+        try:
+            response = redis_conn.connection.execute_command(command)
+
+            if isinstance(response, bytes):
+                response = (response.decode('utf-8'))
+                
+            response = jsonify({'response': str(response)})
+
+        except Exception as e:
+                response = jsonify({"error": str(e)})
+
+        return response
