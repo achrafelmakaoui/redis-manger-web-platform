@@ -24,9 +24,10 @@ class Conn:
         port = creds.get("port")
         username = creds.get("username")
         password = creds.get("password")
+        db = creds.get("db")
         try:
             self.disconnect()
-            self.connection = redis.Redis(host=host, port=port, username=username, password=password, client_name=client_name)
+            self.connection = redis.Redis(host=host, port=port, username=username, password=password, client_name=client_name, db=db)
 
             if (self.connection.ping()):
 

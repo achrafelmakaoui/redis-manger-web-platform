@@ -3,9 +3,10 @@ import redis
 from flask import jsonify, request
 from app import create_app
 from app.services.connection import Conn
+from app.services.command import Command
+from app.services.keys import Keys
 
 app, redis_connections, redis_conn  = create_app()
-
 
 
 # CONNECTIONS
@@ -65,7 +66,48 @@ def connections():
 
 @app.route('/command', methods=['POST'])
 def exec_command():
-    pass
+    global redis_conn
+    if redis_conn:
+        if redis_conn.connection:
+            data =  request.get_json()
+            command = data["command"]
+            return Command.exec_command(redis_conn,command)
+    
+    return jsonify({"error": "connection not established!"})
+
+
+# Keys
+
+@app.route('/keys', methods=['POST','PUT', 'DELETE','GET'])
+def keys():
+    global redis_conn
+    data =  request.get_json()
+    if redis_conn:
+        if redis_conn.connection:
+            if request.method == ("POST" or "PUT") :
+
+                key, value = data["key"], data["value"]
+                
+                return Keys.set_key_value(redis_conn,key, value)
+
+
+            elif request.method == "DELETE":
+
+                key = data["key"]
+                
+                return Keys.delete_key_value(redis_conn,key)
+            
+            elif request.method == "GET":
+
+                key = data["key"]
+                
+                return Keys.get_key_value(redis_conn,key)
+
+    
+    return jsonify({"error": "connection not established!"})
+
+        
+
 
 
 
