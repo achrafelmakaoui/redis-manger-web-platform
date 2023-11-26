@@ -1,0 +1,348 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: "GilroyMedium";
+    src: url("../fonts/Gilroy-Medium.ttf");
+}
+@font-face {
+    font-family: "MyriadProLight";
+    src: url("../fonts/MyriadPro-Light.woff") format("woff");
+}
+@font-face {
+    font-family: "futura";
+    src: url("../fonts/futur.ttf");
+}
+@font-face {
+    font-family: "futuramd";
+    src: url("../fonts/futura\ medium\ bt.ttf");
+}
+@font-face {
+    font-family: "futuracmd";
+    src: url("../fonts/futura\ medium\ condensed\ bt.ttf");
+}
+@font-face {
+    font-family: "futuraextra";
+    src: url("../fonts/Futura\ Extra\ Black\ font.ttf");
+}
+@font-face {
+    font-family: "TripSansBold";
+    src: url("../fonts/TripSans-Bold.ttf");
+}
+@font-face {
+    font-family: "TripSansMedium";
+    src: url("../fonts/TripSans-Medium.ttf");
+}
+@font-face {
+    font-family: "TripSansRegular";
+    src: url("../fonts/TripSans-Regular.ttf");
+}
+@font-face {
+    font-family: "TripSansUltra";
+    src: url("../fonts/TripSans-Ultra.ttf");
+}
+@font-face {
+    font-family: "TripSansMonoRegular";
+    src: url("../fonts/TripSansMono-Regular.ttf");
+}
+@font-face {
+    font-family: "FontsFreeNetSFMonoMedium";
+    src: url("../fonts/FontsFree-Net-SFMono-Medium.ttf");
+}
+
+
+.RedisDash{
+    width: 100%;
+    padding: 0px 20px 0px 20px;
+}
+.RedisDash .RedisDashHed{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.RedisDash .RedisDashHed h2{
+    font-family:'Montserrat';
+    font-weight: 600;
+    color: var(--dark_color);
+    font-style: italic;
+    font-size: 18px;
+    padding-bottom: 2px;
+}
+
+.RedisDash .RedisDashRow1{
+    padding-top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex: 3;
+    gap: 10px;
+}
+/* 1 */
+
+.RedisDash .RedisDashRow1 .Row1Card1{
+    width: 33.33%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid var(--border_bottom_alerts);
+    border-radius: 6px;
+    box-shadow: 0px 1px 4px 0px var(--boxSadow);
+}
+.RedisDash .RedisDashRow1 .Row1Card2{
+    width: 33.33%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid var(--border_bottom_alerts);
+    border-radius: 6px;
+    box-shadow: 0px 1px 4px 0px var(--boxSadow);
+}
+.RedisDash .RedisDashRow1 .Row1Card3{
+    width: 33.33%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid var(--border_bottom_alerts);
+    border-radius: 6px;
+    box-shadow: 0px 1px 4px 0px var(--boxSadow);
+}
+
+/* 2 */
+
+.RedisDash .RedisDashRow1 .Row1Card1 .Card1Header{
+    width: 100%;
+    border-bottom: 1px solid var(--border_bottom_alerts);
+}
+.RedisDash .RedisDashRow1 .Row1Card2 .Card2Header{
+    width: 100%;
+    border-bottom: 1px solid var(--border_bottom_alerts);
+}
+.RedisDash .RedisDashRow1 .Row1Card3 .Card3Header{
+    width: 100%;
+    border-bottom: 1px solid var(--border_bottom_alerts);
+}
+.RedisDash .RedisDashRow1 .Row1Card1 .Card1Header h3{
+    font-family: "GilroyMedium";
+    color: var(--dark_color);
+    font-weight: 500;
+    padding-left: 20px;    
+}
+.RedisDash .RedisDashRow1 .Row1Card2 .Card2Header h3{
+    font-family: "GilroyMedium";
+    color: var(--dark_color);
+    font-weight: 500;
+    padding-left: 20px;        
+}
+.RedisDash .RedisDashRow1 .Row1Card3 .Card3Header h3{
+    font-family: "GilroyMedium";
+    color: var(--dark_color);
+    font-weight: 500;
+    padding-left: 20px;    
+}
+.RedisDash .RedisDashRow1 .Row1Card1 .Card1Header h3 .faServer{
+    color: var(--dark_color);
+    padding-right: 10px;
+    width: 1rem;
+    height: 1rem;
+}
+.RedisDash .RedisDashRow1 .Row1Card2 .Card2Header h3 .faDatabase{
+    color: var(--dark_color);
+    padding-right: 10px;
+    width: 1rem;
+    height: 1rem;
+}
+.RedisDash .RedisDashRow1 .Row1Card3 .Card3Header h3 .faChartColumn{
+    color: var(--dark_color);
+    padding-right: 10px;
+    width: 1rem;
+    height: 1rem;   
+}
+
+/* 3 */
+
+.RedisDash .RedisDashRow1 .Row1Card1 .Card1Contenet{
+    width: 100%;
+    padding: 20px 0px 20px 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.RedisDash .RedisDashRow1 .Row1Card2 .Card2Contenet{
+    width: 100%;
+    padding: 20px 0px 20px 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.RedisDash .RedisDashRow1 .Row1Card3 .Card3Contenet{
+    width: 100%;
+    padding: 20px 0px 20px 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 4 */
+
+.RedisDash .RedisDashRow1 .Row1Card1 .Card1Contenet .Card1ContFt{
+    padding: 10px 0px;
+    background-color: rgba(200, 195, 195, 0.251);
+    border-radius: 4px;
+    width: 90%;
+}
+.RedisDash .RedisDashRow1 .Row1Card2 .Card2Contenet .Card1ContFt{
+    padding: 10px 0px;
+    background-color: rgba(200, 195, 195, 0.251);
+    border-radius: 4px;
+    width: 90%;
+}
+.RedisDash .RedisDashRow1 .Row1Card3 .Card3Contenet .Card1ContFt{
+    padding: 10px 0px;
+    background-color: rgba(200, 195, 195, 0.251);
+    border-radius: 4px;
+    width: 90%;
+}
+
+/* 5 */
+
+.RedisDash .RedisDashRow1 .Row1Card1 .Card1Contenet .Card1ContSd{
+    padding: 10px 0px;
+    background-color: rgba(200, 195, 195, 0.251);
+    border-radius: 4px;
+    width: 90%;
+}
+.RedisDash .RedisDashRow1 .Row1Card2 .Card2Contenet .Card1ContSd{
+    padding: 10px 0px;
+    background-color: rgba(200, 195, 195, 0.251);
+    border-radius: 4px;
+    width: 90%;
+}
+.RedisDash .RedisDashRow1 .Row1Card3 .Card3Contenet .Card1ContSd{
+    padding: 10px 0px;
+    background-color: rgba(200, 195, 195, 0.251);
+    border-radius: 4px;
+    width: 90%;
+}
+
+/* 6 */
+
+.RedisDash .RedisDashRow1 .Row1Card1 .Card1Contenet .Card1ContTh{
+    padding: 10px 0px;
+    background-color: rgba(200, 195, 195, 0.251);
+    border-radius: 4px;
+    width: 90%;
+}
+.RedisDash .RedisDashRow1 .Row1Card2 .Card2Contenet .Card1ContTh{
+    padding: 10px 0px;
+    background-color: rgba(200, 195, 195, 0.251);
+    border-radius: 4px;
+    width: 90%;
+}
+.RedisDash .RedisDashRow1 .Row1Card3 .Card3Contenet .Card1ContTh{
+    padding: 10px 0px;
+    background-color: rgba(200, 195, 195, 0.251);
+    border-radius: 4px;
+    width: 90%;
+}
+
+/* 7 */
+
+.RedisDash .RedisDashRow1 .Row1Card1 .Card1Contenet .Card1ContFt .A1{
+    padding-left: 15px;
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card1 .Card1Contenet .Card1ContFt .A1C{
+    padding-left: 5px;
+    color:rgb(7, 216, 7);
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card2 .Card2Contenet .Card1ContFt .A1{
+    padding-left: 15px;
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card2 .Card2Contenet .Card1ContFt .A1C{
+    padding-left: 5px;
+    color:rgb(7, 216, 7);
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card3 .Card3Contenet .Card1ContFt .A1{
+    padding-left: 15px;
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card3 .Card3Contenet .Card1ContFt .A1C{
+    padding-left: 5px;
+    color:rgb(7, 216, 7);
+    font-family: "GilroyMedium";
+    
+}
+
+/* 8 */
+
+.RedisDash .RedisDashRow1 .Row1Card1 .Card1Contenet .Card1ContSd .A1{
+    padding-left: 15px;
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card1 .Card1Contenet .Card1ContSd .A1C{
+    padding-left: 5px;
+    color:rgb(7, 216, 7);
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card2 .Card2Contenet .Card1ContSd .A1{
+    padding-left: 15px;
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card2 .Card2Contenet .Card1ContSd .A1C{
+    padding-left: 5px;
+    color:rgb(7, 216, 7);
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card3 .Card3Contenet .Card1ContSd .A1{
+    padding-left: 15px;
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card3 .Card3Contenet .Card1ContSd .A1C{
+    padding-left: 5px;
+    color:rgb(7, 216, 7);
+    font-family: "GilroyMedium";
+}
+
+/* 9 */
+
+.RedisDash .RedisDashRow1 .Row1Card1 .Card1Contenet .Card1ContTh .A1{
+    padding-left: 15px;
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card1 .Card1Contenet .Card1ContTh .A1C{
+    padding-left: 5px;
+    color:rgb(7, 216, 7);
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card2 .Card2Contenet .Card1ContTh .A1{
+    padding-left: 15px;
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card2 .Card2Contenet .Card1ContTh .A1C{
+    padding-left: 5px;
+    color:rgb(7, 216, 7);
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card3 .Card3Contenet .Card1ContTh .A1{
+    padding-left: 15px;
+    font-family: "GilroyMedium";
+}
+.RedisDash .RedisDashRow1 .Row1Card3 .Card3Contenet .Card1ContTh .A1C{
+    padding-left: 5px;
+    color:rgb(7, 216, 7);
+    font-family: "GilroyMedium";
+}

@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: "GilroyMedium";
+    src: url("../fonts/Gilroy-Medium.ttf");
+}
+@font-face {
+    font-family: "MyriadProLight";
+    src: url("../fonts/MyriadPro-Light.woff") format("woff");
+}
+@font-face {
+    font-family: "futura";
+    src: url("../fonts/futur.ttf");
+}
+@font-face {
+    font-family: "futuramd";
+    src: url("../fonts/futura\ medium\ bt.ttf");
+}
+@font-face {
+    font-family: "futuracmd";
+    src: url("../fonts/futura\ medium\ condensed\ bt.ttf");
+}
+@font-face {
+    font-family: "futuraextra";
+    src: url("../fonts/Futura\ Extra\ Black\ font.ttf");
+}
+@font-face {
+    font-family: "TripSansBold";
+    src: url("../fonts/TripSans-Bold.ttf");
+}
+@font-face {
+    font-family: "TripSansMedium";
+    src: url("../fonts/TripSans-Medium.ttf");
+}
+@font-face {
+    font-family: "TripSansRegular";
+    src: url("../fonts/TripSans-Regular.ttf");
+}
+@font-face {
+    font-family: "TripSansUltra";
+    src: url("../fonts/TripSans-Ultra.ttf");
+}
+@font-face {
+    font-family: "TripSansMonoRegular";
+    src: url("../fonts/TripSansMono-Regular.ttf");
+}
+@font-face {
+    font-family: "FontsFreeNetSFMonoMedium";
+    src: url("../fonts/FontsFree-Net-SFMono-Medium.ttf");
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: "GilroyMedium";
+    src: url("../fonts/Gilroy-Medium.ttf");
+}
+@font-face {
+    font-family: "MyriadProLight";
+    src: url("../fonts/MyriadPro-Light.woff") format("woff");
+}
+@font-face {
+    font-family: "futura";
+    src: url("../fonts/futur.ttf");
+}
+.NewKeymotionDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--motion_div_bg);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+}
+.newkeycontainer{
+    width: 900px;
+    height: 350px;
+    background: var(--background_color);
+    border-radius: 3px;
+    box-shadow: 0px 2px 12px 0px var(--box_shadow_alert_cards);
+    transform: translate(-50%, -50%);
+}
+.newkeycoLgFrst{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+}
+.newkeycoLgFrst .newkeyconnTit h3{
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 700;
+    color: var(--dark_color);
+}
+.newkeycoLgFrst .newKeyxMarkIcon{
+    color: var(--conn_name_color);
+    padding: 0;
+    margin: 0;
+}
+.newkeycoLgFrst .newKeyxMarkIcon .newKeyxMark{
+    cursor: pointer;
+    width: 1.10rem;
+    height:1.10rem;
+}
+.newkeycoLgFrst .newKeyxMarkIcon .newKeyxMark:hover{
+    color: #406de0;
+}
+
+.newkeyitemsConn{
+  padding: 20px 20px 0px 20px;
+}
+
+.newkeyitemsConn .newkeyitemConn1{
+  display: grid;
+  padding: 0px 0px 40px 0px;
+}
+.newkeyitemsConn .newkeyitemConn1 label{
+    color: var(--conn_name_color);
+    font-family: "GilroyMedium";
+    font-weight: 600;
+    font-size: 13px;
+    padding-bottom: 13px;
+}
+
+.newkeyitemsConn .newkeyitemConn1 input{
+    border: 0;
+    outline: none;
+    /* width: 100%; */
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid rgba(128, 128, 128, 0.641);
+    color: rgba(128, 128, 128, 0.641);
+    padding: 0px 0px 0px 10px;
+    font-family: "GilroyMedium";
+    font-weight: 500;
+    background-color: transparent;
+}
+.newkeyitemsConn .newkeyitemConn1 input:focus{
+    border: 1px solid #406de0;
+}
+.newkeyitemsConn .newkeyitemConn2{
+    display: grid;
+    padding-bottom: 15px;
+}
+
+.newkeyitemsConn .newkeyitemConn2 label{
+    color: var(--conn_name_color);
+    font-family: "GilroyMedium";
+    font-weight: 600;
+    font-size: 13px;
+    padding-bottom: 13px;
+}
+.newkeyitemsConn .newkeyitemConn2 select{
+    font-family: "GilroyMedium";
+    font-weight: 500;
+    width: 100%;
+    border: 1px solid rgba(128, 128, 128, 0.641);
+    color: rgba(128, 128, 128, 0.641);
+    padding: 6px 8px;
+    border-radius: 4px;
+    background-color: transparent;
+}
+.newkeyitemsConn .newkeyitemConn2 select option{
+    color:black;
+}
+
+
+.newkeyitemsConn .newkeyitemConn2 select:focus{
+    border-color: #406de0;
+    outline: none;
+} 

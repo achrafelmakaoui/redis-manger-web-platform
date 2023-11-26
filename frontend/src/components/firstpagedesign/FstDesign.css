@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: "GilroyMedium";
+    src: url("../fonts/Gilroy-Medium.ttf");
+}
+@font-face {
+    font-family: "MyriadProLight";
+    src: url("../fonts/MyriadPro-Light.woff") format("woff");
+}
+@font-face {
+    font-family: "futura";
+    src: url("../fonts/futur.ttf");
+}
+@font-face {
+    font-family: "futuramd";
+    src: url("../fonts/futura\ medium\ bt.ttf");
+}
+@font-face {
+    font-family: "futuracmd";
+    src: url("../fonts/futura\ medium\ condensed\ bt.ttf");
+}
+@font-face {
+    font-family: "futuraextra";
+    src: url("../fonts/Futura\ Extra\ Black\ font.ttf");
+}
+@font-face {
+    font-family: "TripSansBold";
+    src: url("../fonts/TripSans-Bold.ttf");
+}
+@font-face {
+    font-family: "TripSansMedium";
+    src: url("../fonts/TripSans-Medium.ttf");
+}
+@font-face {
+    font-family: "TripSansRegular";
+    src: url("../fonts/TripSans-Regular.ttf");
+}
+@font-face {
+    font-family: "TripSansUltra";
+    src: url("../fonts/TripSans-Ultra.ttf");
+}
+@font-face {
+    font-family: "TripSansMonoRegular";
+    src: url("../fonts/TripSansMono-Regular.ttf");
+}
+@font-face {
+    font-family: "FontsFreeNetSFMonoMedium";
+    src: url("../fonts/FontsFree-Net-SFMono-Medium.ttf");
+}
+.fstDesign{
+    width: 100%;
+    padding: 50px 20px 0px 20px;
+}
+.fstDesign .stLayout{
+    width: 100%;
+}
+.fstDesign .stLayout .cardDes{
+    display: flex;
+    flex: 2;
+    width: 100%;
+    background-image: url(../images/BHTTT.png);
+    background-position: center;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    /* position: relative; */
+    border-radius: 10px;
+    height: 250px;
+    overflow: hidden;
+    box-shadow: 0px 2px 8px 0px var(--boxSadow);
+
+}
+.fstDesign .stLayout .cardDes .cardDesDesc{
+    flex: 50%;
+    padding: 25px 40px;
+}
+
+
+.fstDesign .stLayout .cardDes .cardDesDesc .cardDesDescTit h3{
+    font-family: 'Montserrat',sans-serif;
+    /* font-weight: 600; */
+}
+@keyframes wave {
+    0% { transform: rotate(15deg); }
+    13% { transform: rotate(-15deg); }
+    25% { transform: rotate(15deg); }
+    38% { transform: rotate(-15deg); }
+    50% { transform: rotate(15deg); }
+    63% { transform: rotate(-15deg); }
+    75% { transform: rotate(15deg); }
+    83% { transform: rotate(-15deg); }
+    100% { transform: rotate(15deg); }
+  }
+  
+  /* Apply the waving animation to the wave span */
+.fstDesign .stLayout .cardDes .cardDesDesc .cardDesDescTit h3 .wave {
+    display: inline-block;
+    animation: wave 3s infinite;
+  }
+
+.fstDesign .stLayout .cardDes .cardDesDesc .cardDesDescSecTit{
+    display: flex;
+
+}
+.fstDesign .stLayout .cardDes .cardDesDesc .cardDesDescSecTit .Ariel{
+    width:45px;
+    display: flex;
+    align-items: first baseline;
+    padding-bottom: 15px;
+    padding-left: 5px;
+}
+.fstDesign .stLayout .cardDes .cardDesDesc .cardDesDescSecTit h2{
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 900;
+    line-height: 1;
+    display: flex;
+    align-items: first baseline;
+    
+}
+.fstDesign .stLayout .cardDes .cardDesDesc .cardBtn{
+    padding-top: 30px;
+}
+.fstDesign .stLayout .cardDes .cardDesDesc .cardBtn button{
+    font-family: 'Montserrat',sans-serif;
+    background-color: rgba(22, 22, 22, 0.892);
+    border-radius: 4px;
+    padding: 10px 20px;
+    color: white;
+    border: 1px solid rgb(36, 36, 36);
+}
+.fstDesign .stLayout .cardDes .cardDesDesc .cardBtn button:hover{
+    font-family: 'Montserrat',sans-serif;
+    background-color: rgb(22, 22, 22);
+    border-radius: 4px;
+    padding: 10px 20px;
+    color: white;
+    border: 1px solid rgb(36, 36, 36);
+}
+
+.fstDesign .stLayout .cardDes .cardDesVuis{
+    flex: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: first baseline;
+    padding-top: 10px;
+    margin-right: -30px;
+    position: relative;
+}
+.fstDesign .stLayout .cardDes .cardDesVuis img{
+    transform: rotate(35deg);
+    top: 15;
+    position: absolute;
+    width: 400px;
+    
+}
+
+.fstDesign .fstDesignChild{
+    width: 100%;
+    gap: 15px;
+    display: flex;
+    padding-top: 15px;
+    
+}
+.fstDesign .fstDesignChild .RedisCliDes{
+    width: 50%;
+    background-image: url(../images/BHTTT.png);
+    background-position: center;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    /* position: relative; */
+    border-radius: 10px;
+    height: 300px;
+    box-shadow: 0px 2px 8px 0px var(--boxSadow);
+}
+.fstDesign .fstDesignChild .RedisCliDes .cliTop{
+    padding: 15px 30px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.493);
+}
+.fstDesign .fstDesignChild .RedisCliDes .cliTop .circleIcon{
+    padding-right: 8px;
+    color: #FEBC2C;
+}
+.fstDesign .fstDesignChild .RedisCliDes .cliTop .circleIcon:first-child{
+    padding-right: 8px;
+    color: #FC5F56;
+}
+.fstDesign .fstDesignChild .RedisCliDes .cliTop .circleIcon:last-child{
+    padding-right: 0px;
+    color: #27C93F;
+}
+
+.fstDesign .fstDesignChild .toolUses{
+    width: 50%;
+    background-image: url(../images/BHTTT.png);
+    background-position: center;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    /* position: relative; */
+    border-radius: 10px;
+    height: 300px;    
+    box-shadow: 0px 2px 8px 0px var(--boxSadow);
+}
+.fstDesign .fstDesignChild .RedisCliDes .RedisMagnetCli{
+    padding: 0px 30px;
+}
+.fstDesign .fstDesignChild .RedisCliDes .RedisMagnetCli .animRead{
+    font-family: 'Montserrat',sans-serif;
+    font-family: 'FontsFreeNetSFMonoMedium';
+}
+@keyframes heartbeat {
+    0% {
+      transform: scale(1);
+      opacity: 0;
+    }
+    25% {
+      transform: scale(1.1);
+      opacity: 1;
+
+    }
+    50% {
+      transform: scale(1);
+      opacity: 0;
+
+    }
+    75% {
+      transform: scale(1.1);
+      opacity: 1;
+
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0;
+
+    }
+  }
+  .heartbeat {
+    display: inline-block;
+    animation: heartbeat 1.5s infinite;
+    font-weight: bolder;
+    color: black;
+  }
+
+.fstDesign .fstDesignChild .toolUses .topIcon{
+    width: 100%;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.493);
+}
+.fstDesign .fstDesignChild .toolUses .topIcon .Cooding{
+    width: 44px;
+    padding-left: 25px;
+}
+.fstDesign .fstDesignChild .toolUses .toolsDiv{
+   width: 100%;
+}
+.fstDesign .fstDesignChild .toolUses .toolsDiv .frontTools{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 25px 10px 20px 10px;
+}
+.fstDesign .fstDesignChild .toolUses .toolsDiv .frontTools .react{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #fdfdfdaa;
+    box-shadow: 0px 2px 12px 0px #00000062;
+}
+.fstDesign .fstDesignChild .toolUses .toolsDiv .frontTools .react img{
+   width: 65px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.fstDesign .fstDesignChild .toolUses .toolsDiv .frontTools .html{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    /* background-color: #fdfdfdaa; */
+    background-color: #fdfdfdaa;
+    box-shadow: 0px 2px 12px 0px #00000062;
+}
+.fstDesign .fstDesignChild .toolUses .toolsDiv .frontTools .html img{
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+.fstDesign .fstDesignChild .toolUses .toolsDiv .frontTools .css{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #fdfdfdaa;
+    box-shadow: 0px 2px 12px 0px #00000062;
+}
+.fstDesign .fstDesignChild .toolUses .toolsDiv .frontTools .css img{
+    width: 50px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.fstDesign .fstDesignChild .toolUses .toolsDiv .backTools{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    flex: 3;
+    padding: 25px 10px 20px 10px;
+
+}
+.fstDesign .fstDesignChild .toolUses .toolsDiv .backTools .redis{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #fdfdfdaa;
+    box-shadow: 0px 2px 12px 0px #00000062;
+}
+.fstDesign .fstDesignChild .toolUses .toolsDiv .backTools .redis img{
+   width: 65px;
+}
+.fstDesign .fstDesignChild .toolUses .toolsDiv .backTools .flask{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height:70px;
+    border-radius: 50%;
+    background-color: #fdfdfdaa;
+    box-shadow: 0px 2px 12px 0px #00000062;
+}
+.fstDesign .fstDesignChild .toolUses .toolsDiv .backTools .flask img{
+   width: 50px;
+}
+.fstDesign .fstDesignChild .toolUses .toolsDiv .backTools .redux{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #fdfdfdaa;
+    box-shadow: 0px 2px 12px 0px #00000062;
+}
+.fstDesign .fstDesignChild .toolUses .toolsDiv .backTools .redux img{
+   width: 50px;
+}
