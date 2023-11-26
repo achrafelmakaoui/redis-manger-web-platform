@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: "GilroyMedium";
+    src: url("../fonts/Gilroy-Medium.ttf");
+}
+@font-face {
+    font-family: "MyriadProLight";
+    src: url("../fonts/MyriadPro-Light.woff") format("woff");
+}
+@font-face {
+    font-family: "futura";
+    src: url("../fonts/futur.ttf");
+}
+@font-face {
+    font-family: "futuramd";
+    src: url("../fonts/futura\ medium\ bt.ttf");
+}
+@font-face {
+    font-family: "futuracmd";
+    src: url("../fonts/futura\ medium\ condensed\ bt.ttf");
+}
+@font-face {
+    font-family: "futuraextra";
+    src: url("../fonts/Futura\ Extra\ Black\ font.ttf");
+}
+@font-face {
+    font-family: "TripSansBold";
+    src: url("../fonts/TripSans-Bold.ttf");
+}
+@font-face {
+    font-family: "TripSansMedium";
+    src: url("../fonts/TripSans-Medium.ttf");
+}
+@font-face {
+    font-family: "TripSansRegular";
+    src: url("../fonts/TripSans-Regular.ttf");
+}
+@font-face {
+    font-family: "TripSansUltra";
+    src: url("../fonts/TripSans-Ultra.ttf");
+}
+@font-face {
+    font-family: "TripSansMonoRegular";
+    src: url("../fonts/TripSansMono-Regular.ttf");
+}
+
+.ConPg{
+    display: flex;
+}
+.fullCon{
+    width: fit-content;
+    height: 96vh;
+    border-right: 1px solid rgba(128, 128, 128, 0.349);
+    padding-right: 10px;
+    padding-top: 7px;
+}
+.connection{
+    display: flex;
+    gap: 6px;
+    padding: 0px 0px 15px 0px;
+}
+.newCon button{
+    width: 180px;
+    padding: 5px 10px;
+    gap: 3px;
+    color: white;
+    background-color: rgba(172, 169, 169, 0.779);
+    border: 1px solid rgba(172, 169, 169, 0.779);
+    border-radius: 3px;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+}
+.newCon button:hover{
+    border: 1px solid rgba(172, 169, 169, 0.858);
+    color: rgba(255, 255, 255, 0.94);
+    background-color: rgb(172, 169, 169);
+}
+.setting button{
+    padding: 5px 10px;
+    gap: 3px;
+    background-color: #4545e89f;
+    border:1px solid #5656ff;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #ffffffdc;
+}
+.setting button:hover{
+    background-color: #3838ead8;
+    color: rgba(255, 255, 255, 0.951);
+}
+.Log button{
+    padding: 5px 10px;
+    gap: 3px;
+    background-color: #4545e89f;
+    border:1px solid #5656ff;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #ffffffdc;
+    /* color: #3838ea97; */
+}
+.Log button:hover{
+    background-color: #3838ead8;
+    color: rgba(255, 255, 255, 0.951);
+}
+.newCon button .faCirclePlus{
+    width: 0.75rem;
+    padding: 0px 2px 0px 0px;
+    
+}
+.setting button .faGear{
+    width: 0.75rem;
+}
+.Log button .faClock{
+    width: 0.75rem;
+}

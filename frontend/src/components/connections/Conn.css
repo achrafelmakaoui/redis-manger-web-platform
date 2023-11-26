@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: "GilroyMedium";
+    src: url("../fonts/Gilroy-Medium.ttf");
+}
+@font-face {
+    font-family: "MyriadProLight";
+    src: url("../fonts/MyriadPro-Light.woff") format("woff");
+}
+@font-face {
+    font-family: "futura";
+    src: url("../fonts/futur.ttf");
+}
+@font-face {
+    font-family: "futuramd";
+    src: url("../fonts/futura\ medium\ bt.ttf");
+}
+@font-face {
+    font-family: "futuracmd";
+    src: url("../fonts/futura\ medium\ condensed\ bt.ttf");
+}
+@font-face {
+    font-family: "futuraextra";
+    src: url("../fonts/Futura\ Extra\ Black\ font.ttf");
+}
+@font-face {
+    font-family: "TripSansBold";
+    src: url("../fonts/TripSans-Bold.ttf");
+}
+@font-face {
+    font-family: "TripSansMedium";
+    src: url("../fonts/TripSans-Medium.ttf");
+}
+@font-face {
+    font-family: "TripSansRegular";
+    src: url("../fonts/TripSans-Regular.ttf");
+}
+@font-face {
+    font-family: "TripSansUltra";
+    src: url("../fonts/TripSans-Ultra.ttf");
+}
+@font-face {
+    font-family: "TripSansMonoRegular";
+    src: url("../fonts/TripSansMono-Regular.ttf");
+}
+@font-face {
+    font-family: "FontsFreeNetSFMonoMedium";
+    src: url("../fonts/FontsFree-Net-SFMono-Medium.ttf");
+}
+
+.listConn{
+    padding: 15px 0px 15px 0px;
+    border-top: 1px solid rgba(128, 128, 128, 0.349);
+    /* height: 98vh; */
+    /* overflow-y: scroll; */
+}
+.listConn .lstMap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.349);
+    height: 50px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.listConn .lstMap:hover{
+    background-color: #4545e877;
+    cursor: pointer;
+}
+.listConn .lstMap:hover > .connTaches .third {
+    padding-right: 3px;
+}
+.listConn .lstMap:hover > .connName h4 {
+    padding-left: 3px;
+}
+/* .listConn .lstMap .connName{
+    
+} */
+.listConn .lstMap .connName h4{
+    font-family: "GilroyMedium";
+    font-size: 15px;
+    color: var(--conn_name_color);
+}
+.listConn .lstMap .connTaches{
+    display: flex;
+    gap: 12px;
+}
+.listConn .lstMap .connTaches .first{
+    cursor: pointer;
+    width: 1rem;
+    color: var(--conn_taches_icon_color);
+    padding: 2px;
+
+}
+.listConn .lstMap .connTaches .first:hover{
+    background-color: rgba(128, 128, 128, 0.405);
+    border-radius: 2px;
+}
+.listConn .lstMap .connTaches .second{
+    cursor: pointer;
+    width: 1rem;
+    color: var(--conn_taches_icon_color);
+    padding: 2px;
+}
+.listConn .lstMap .connTaches .second:hover{
+    background-color: rgba(128, 128, 128, 0.405);
+    border-radius: 2px;
+}
+.listConn .lstMap .connTaches .third{
+    cursor: pointer;
+    width: 1rem;
+    color: var(--conn_taches_icon_color);
+    padding: 2px;
+}
+.listConn .lstMap .connTaches .third:hover{
+    background-color: rgba(128, 128, 128, 0.405);
+    border-radius: 2px;
+}
+
+.ConnDet{
+    padding: 15px 0px;
+}
+.ConnDet .ConnDetRow1{
+    display: flex;
+    flex: 2;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    padding-bottom: 8px;
+}
+.ConnDet .ConnDetRow1 .ConnDetItem1{
+    width: 50%;
+}
+.ConnDet .ConnDetRow1 .ConnDetItem1 select{
+    width: 100%;
+    font-family: "GilroyMedium";
+    font-size: 14px;
+    border: 1px solid var(--border_bottom_alerts);
+    font-weight: 500;
+    color: var(--conn_name_color);
+    padding: 4px 8px;
+    border-radius: 3px;
+    background-color: transparent;
+}
+.ConnDet .ConnDetRow1 .ConnDetItem1 select option{
+    color:black;
+}
+.ConnDet .ConnDetRow1 .ConnDetItem1 select:focus{
+    border-color: #4545e877; /* Change this to the desired border color */
+    outline: none;
+}
+.ConnDet .ConnDetRow1 .ConnDetItem2{
+    width: 50%;
+}
+.ConnDet .ConnDetRow1 .ConnDetItem2 button{
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--border_bottom_alerts);
+    color: var(--conn_name_color);
+    font-family: "GilroyMedium";
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4.5px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.ConnDet .ConnDetRow1 .ConnDetItem2 button:hover{
+    background-color: #4545e877;
+    border: 1px solid #4545e877;
+
+}
+.ConnDet .ConnDetRow1 .ConnDetItem2 button .CirclePlus{
+    padding-right: 6px;
+    width:0.80rem ;
+    height:0.80rem ;
+}
+
+/* .ConnDet .ConnDetRow2{
+
+} */
+.ConnDet .ConnDetRow2 .searchKey{
+    width: 100%;
+    font-family: "GilroyMedium";
+    font-size: 14px;
+    border: 1px solid var(--border_bottom_alerts);
+    font-weight: 500;
+    color: var(--conn_name_color);
+    padding: 4px 8px;
+    border-radius: 3px;
+    background-color: transparent;
+    outline: none;
+}
+.ConnDet .ConnDetRow2 .searchKey:focus{
+    border: 1px solid #4545e877;
+}
+.ConnDet .ConnDetRow3{
+    height: 450px;
+}
+.ConnDet .ConnDetRow3 h4{
+    font-family: "GilroyMedium";
+    color: var(--conn_name_color);
+}
+.ConnDet .ConnDetRow4{
+    display: flex;
+    flex: 2;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+.ConnDet .ConnDetRow4 .LoadData{
+    width: 50%;
+    background-color: transparent;
+    border: 1px solid var(--border_bottom_alerts);
+    color: var(--conn_name_color);
+    font-family: "GilroyMedium";
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4.5px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+
+}
+.ConnDet .ConnDetRow4 .AllData{
+    width: 50%;
+    background-color: #4545e8e3;
+    border: 1px solid var(--border_bottom_alerts);
+    color: white;
+    font-family: "GilroyMedium";
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4.5px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+
+}
+.ConnDet .ConnDetRow4 .LoadData:hover{
+    background-color: var(--border_bottom_alerts);
+}
+.ConnDet .ConnDetRow4 .AllData:hover{
+    background-color: #5252d6e1;
+}

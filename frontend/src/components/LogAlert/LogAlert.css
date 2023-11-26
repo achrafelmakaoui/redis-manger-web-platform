@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: "GilroyMedium";
+    src: url("../fonts/Gilroy-Medium.ttf");
+}
+@font-face {
+    font-family: "MyriadProLight";
+    src: url("../fonts/MyriadPro-Light.woff") format("woff");
+}
+@font-face {
+    font-family: "MyriadProReg";
+    src: url("../fonts/MYRIADPRO-REGULAR.woff") format("woff");
+}
+@font-face {
+    font-family: "futura";
+    src: url("../fonts/futur.ttf");
+}
+.LogMotionDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--motion_div_bg);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+}
+.LogContainer{
+    width: 900px;
+    height: 535px;
+    background: var(--background_color);
+    border-radius: 3px;
+    box-shadow: 0px 2px 12px 0px var(--box_shadow_alert_cards);
+    transform: translate(-50%, -50%);
+}
+.LogColFst{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+}
+.LogColFst .LogTit h3{
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 700;
+    color: var(--dark_color);
+}
+.LogColFst .LogxMarkIcon{
+    color: var(--conn_name_color);
+    padding: 0;
+    margin: 0;
+}
+.LogColFst .LogxMarkIcon .LogxMark{
+    cursor: pointer;
+    width: 1.10rem;
+    height:1.10rem;
+}
+.LogColFst .LogxMarkIcon .LogxMark:hover{
+    color: #406de0;
+}
+.LogItems{
+  padding: 20px 20px;
+  /* width: 100%; */
+}
+.LogItems .LogCli {
+  height: 275px;
+  border-radius: 4px;
+  padding: 0px 0px 40px 0px;
+  border: 1px solid var(--dark_color);
+  overflow-y: scroll;
+}
+.LogItems .LogCli .LogData{
+    margin-left:15px;
+}
+.LogItems .LogCli span{
+    margin-right:5px;
+}
+.LogItems .LogCli span:last-child{
+    margin-right:0px;
+}
+.LogItems .LogCli .LogData:first-child{
+    margin-top:10px;
+}
+.LogItems .LogCli .LogData .Time{
+    font-family: "MyriadProReg";
+    color: var(--log_time);
+}
+.LogItems .LogCli .LogData .Separatore1{
+    font-family: "GilroyMedium";
+    color: var(--log_spr1);
+}
+.LogItems .LogCli .LogData .ConnName{
+    font-family: "GilroyMedium";
+    color: var(--log_color);
+}
+.LogItems .LogCli .LogData .Separatore2{
+    font-family: "GilroyMedium";
+    color: var(--log_color);
+}
+.LogItems .LogCli .LogData .Req{
+    font-family: "GilroyMedium";
+    color: var(--dark_color);
+}
+.LogItems .LogCli .LogData .ReqDec{
+    font-family: "GilroyMedium";
+    color: var(--log_color);
+}
+.LogItems .LogCli .LogData .Ping{
+    font-family: "GilroyMedium";
+    color: rgba(255, 0, 0, 0.476);
+}
+
+.LogItems .LogGest{
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+}
+.LogItems .LogGest .InpSear{
+    font-family: "MyriadProReg";
+    border: 0;
+    outline: none;
+    width: 23%;
+    height: 26px;
+    border-radius: 3px;
+    border: 1px solid var(--conn_taches_icon_color);
+    color: rgba(128, 128, 128, 0.641);
+    padding: 0px 0px 0px 15px;
+    background-color: transparent;
+}
+.LogItems .LogGest .InpSear:focus{
+    border: 1px solid #406de0;
+}
+
+.LogItems .LogGest .OnlyBox{
+    width: 15px;
+    height:15px;
+    margin-left: 10px;
+    margin-right: 5px;
+    background-color: var(--background_color);
+    
+}
+.LogItems .LogGest label{
+    font-family: "GilroyMedium";
+    color: rgba(64, 63, 63, 0.827);
+    font-size: 15px;
+}
+.LogItems .LogGest input[type="checkbox"]:checked + label {
+    color: #406de0;
+  }
+
+
+.butnReq{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 30px 20px;
+    gap: 10px;
+}
+
+
+.butnReq .clearBtn{
+    background-color: #4a587dd6;
+    border-radius: 3px;
+    border: 1px solid #23262e9a;
+    padding: 6px 12px;
+    color: white;
+    font-size: 13px;
+    font-weight:500;
+    font-family: "GilroyMedium";
+    cursor: pointer;
+}
+
+.butnReq .clearBtn:hover{
+    background-color: #23262e;
+    
+}
