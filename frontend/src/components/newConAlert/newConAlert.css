@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: "GilroyMedium";
+    src: url("../fonts/Gilroy-Medium.ttf");
+}
+@font-face {
+    font-family: "MyriadProLight";
+    src: url("../fonts/MyriadPro-Light.woff") format("woff");
+}
+@font-face {
+    font-family: "futura";
+    src: url("../fonts/futur.ttf");
+}
+.motionDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--motion_div_bg);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+}
+.container{
+    width: 900px;
+    height: 430px;
+    background: var(--background_color);
+    border-radius: 3px;
+    box-shadow: 0px 2px 12px 0px var(--boxSadow);
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+.coLgFrst{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+}
+.coLgFrst .connTit h3{
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 700;
+    /* color: var(--conn_name_color); */
+    color: var(--dark_color);
+}
+.coLgFrst .xMarkIcon{
+    color: var(--conn_name_color);
+    padding: 0;
+    margin: 0;
+}
+.coLgFrst .xMarkIcon .xMark{
+    cursor: pointer;
+    width: 1.10rem;
+    height:1.10rem;
+}
+.coLgFrst .xMarkIcon .xMark:hover{
+    color: #406de0;
+}
+
+
+.itemsConn{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 20px;
+    width: 100%;
+}
+.itemsConn .itemConn1{
+    display: grid;
+    width: 50%;
+}
+.itemsConn .itemConn1 label{
+    font-family: "GilroyMedium";
+    color: var(--conn_name_color);
+    font-size: 14px;
+    padding-bottom: 15px;
+    padding-top: 20px;
+}
+.itemsConn .itemConn1 input{
+    border: 0;
+    outline: none;
+    width: 87.5%;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid rgba(128, 128, 128, 0.641);
+    color: rgba(128, 128, 128, 0.641);
+    padding: 0px 0px 0px 14px;
+    font-family: "futura";
+    background-color: transparent;
+}
+.itemsConn .itemConn1 input:focus{
+    border: 1px solid #406de0;
+}
+.itemsConn .itemConn2{
+    display: grid;
+    width: 50%;
+}
+.itemsConn .itemConn2 label{
+    font-family: "GilroyMedium";
+    color: var(--conn_name_color);
+    font-size: 14px;
+    padding-bottom: 15px;
+    padding-top: 20px;
+}
+.itemsConn .itemConn2 input{
+    border: 0;
+    outline: none;
+    width: 87.5%;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid rgba(128, 128, 128, 0.641);
+    color: rgba(128, 128, 128, 0.641);
+    padding: 0px 0px 0px 14px;
+    font-family: "futura";
+    background-color: transparent;
+
+
+}
+.itemsConn .itemConn2 input:focus{
+    border: 1px solid #406de0;
+}
+.itemsConn .itemConn3{
+    display: grid;
+    width: 50%;
+}
+.itemsConn .itemConn3 label{
+    font-family: "GilroyMedium";
+    color: var(--conn_name_color);
+    font-size: 14px;
+    padding-bottom: 15px;
+    padding-top: 20px;
+}
+.itemsConn .itemConn3 input{
+    border: 0;
+    outline: none;
+    width: 87.5%;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid rgba(128, 128, 128, 0.641);
+    color: rgba(128, 128, 128, 0.641);
+    padding: 0px 0px 0px 14px;
+    font-family: "futura";
+    background-color: transparent;
+
+}
+.itemsConn .itemConn3 input:focus{
+    border: 1px solid #406de0;
+}
+.itemsConn .itemConn4{
+    display: grid;
+    width: 50%;
+}
+.itemsConn .itemConn4 label{
+    font-family: "GilroyMedium";
+    color: var(--conn_name_color);
+    font-size: 14px;
+    padding-bottom: 15px;
+    padding-top: 20px;
+}
+.itemsConn .itemConn4 input{
+    border: 0;
+    outline: none;
+    width: 87.5%;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid rgba(128, 128, 128, 0.641);
+    color: rgba(128, 128, 128, 0.641);
+    padding: 0px 0px 0px 14px;
+    font-family: "futura";
+    background-color: transparent;
+
+}
+.itemsConn .itemConn4 input:focus{
+    border: 1px solid #406de0;
+}
+.itemsConn .itemConn5{
+    display: grid;
+    width: 50%;
+}
+.itemsConn .itemConn5 label{
+    font-family: "GilroyMedium";
+    color: var(--conn_name_color);
+    font-size: 14px;
+    padding-bottom: 15px;
+    padding-top: 20px;
+}
+.itemsConn .itemConn5 input{
+    border: 0;
+    outline: none;
+    width: 87.5%;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid rgba(128, 128, 128, 0.641);
+    color: rgba(128, 128, 128, 0.641);
+    padding: 0px 0px 0px 14px;
+    font-family: "futura";
+    background-color: transparent;
+
+}
+.itemsConn .itemConn5 input:focus{
+    border: 1px solid #406de0;
+}
+.itemsConn .itemConn6{
+    display: grid;
+    width: 50%;
+}
+.itemsConn .itemConn6 label{
+    font-family: "GilroyMedium";
+    color: var(--conn_name_color);
+    font-size: 14px;
+    padding-bottom: 15px;
+    padding-top: 20px;
+}
+.itemsConn .itemConn6 input{
+    border: 0;
+    outline: none;
+    width: 87.5%;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid rgba(128, 128, 128, 0.641);
+    color: rgba(128, 128, 128, 0.641);
+    padding: 0px 0px 0px 14px;
+    font-family: "futura";
+    background-color: transparent;
+
+}
+.itemsConn .itemConn6 input:focus{
+    border: 1px solid #406de0;
+}
+
+.butnReq{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 30px 20px;
+    gap: 10px;
+}
+
+.butnReq .cacelBtn{
+    background-color: transparent;
+    border-radius: 3px;
+    border: 1px solid rgba(56, 54, 54, 0.538);
+    padding: 6px 12px;
+    color: var(--conn_name_color);
+    font-size: 13px;
+    font-weight:500;
+    font-family: "GilroyMedium";
+    cursor: pointer;
+}
+.butnReq .okBtn{
+    background-color: #406de0;
+    border-radius: 3px;
+    border: 1px solid #406de0;
+    padding: 6px 12px;
+    color: white;
+    font-size: 13px;
+    font-weight:500;
+    font-family: "GilroyMedium";
+    cursor: pointer;
+}
+.butnReq .cacelBtn:hover{
+    /* background-color: rgb(201, 201, 201); */
+    background-color: rgba(110, 108, 108, 0.538);
+    color: white;
+}
+.butnReq .okBtn:hover{
+    background-color: #2259e3;
+    
+}

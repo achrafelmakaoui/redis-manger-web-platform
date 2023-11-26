@@ -1,0 +1,33 @@
+:root{
+    --dark_color: black;
+    --background_color: white;
+    --conn_name_color:rgb(67, 67, 67);
+    --conn_taches_icon_color:rgb(100, 97, 97);
+    --motion_div_bg:rgba(0, 0, 0, 0.398);
+    --box_shadow_alert_cards:#00000022;
+    --border_bottom_alerts:#00000037;
+    --log_color:rgba(0, 0, 0, 0.518);
+    --log_time:rgba(0, 0, 0, 0.877);
+    --log_spr1:rgba(0, 0, 0, 0.623);
+    --boxSadow:#00000041;
+    --overflow_bg:rgb(33, 33, 33);
+}
+
+[data-theme='dark']{
+    --dark_color: rgb(245, 245, 245);
+    --background_color: #212121;
+    --conn_name_color:rgb(235, 232, 232);
+    --conn_taches_icon_color:rgb(225, 220, 220);
+    --motion_div_bg:rgba(255, 255, 255, 0.256);
+    --box_shadow_alert_cards:#ffffff22;
+    --border_bottom_alerts:#ffffff25;
+    --log_color:rgba(255, 255, 255, 0.518);
+    --log_time:rgba(255, 255, 255, 0.877);
+    --log_spr1:rgba(255, 255, 255, 0.623);
+    --boxSadow:#ffffff19;
+    --overflow_bg:rgba(239, 239, 239, 0.816);
+
+}
+body{
+    background-color: var(--background_color);
+}

@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: "GilroyMedium";
+    src: url("../fonts/Gilroy-Medium.ttf");
+}
+@font-face {
+    font-family: "MyriadProLight";
+    src: url("../fonts/MyriadPro-Light.woff") format("woff");
+}
+@font-face {
+    font-family: "futura";
+    src: url("../fonts/futur.ttf");
+}
+.settingMotionDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--motion_div_bg);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+}
+.settingContainer{
+    width: 900px;
+    height: 500px;
+    background: var(--background_color);
+    border-radius: 3px;
+    box-shadow: 0px 2px 12px 0px var(--box_shadow_alert_cards);
+    transform: translate(-50%, -50%);
+}
+.settingColFst{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+}
+.settingColFst .settingTit h3{
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 700;
+    color: var(--dark_color);
+}
+.settingColFst .settingxMarkIcon{
+    color: var(--conn_name_color);
+    padding: 0;
+    margin: 0;
+}
+.settingColFst .settingxMarkIcon .settingxMark{
+    cursor: pointer;
+    width: 1.10rem;
+    height:1.10rem;
+}
+.settingColFst .settingxMarkIcon .settingxMark:hover{
+    color: #406de0;
+}
+.settingItems{
+  padding: 20px 20px 0px 20px;
+  /* width: 100%; */
+}
+.settingItems .settingAppearance{
+  background: var(--background_color);
+  /* box-shadow: 0px 2px 12px 0px var(--box_shadow_alert_cards); */
+  border: 1px solid var(--border_bottom_alerts);
+  padding: 0px 0px 40px 0px;
+}
+.settingItems .settingAppearance .settingAppTit{
+  border-bottom: 1px solid var(--border_bottom_alerts);
+}
+.settingItems .settingAppearance .settingAppTit h4{
+  font-family: "GilroyMedium";
+  /* color: rgba(56, 54, 54, 0.83); */
+  color: var(--conn_name_color);
+  font-size: 15px;
+  padding-top: 0px;
+  margin-left: 20px;
+}
+.AppItems{
+  display: flex;
+  flex: 3;
+  padding: 20px 0px 0px 20px;
+}
+.AppItems .AppItems1{
+  flex: 33.33%;
+}
+.AppItems .AppItems1 label{
+  color: var(--conn_name_color);
+  font-family: "GilroyMedium";
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.AppItems .AppItems2{
+  display: grid;
+  flex: 33.33%;
+  gap: 20px;
+}
+.AppItems .AppItems3{
+  display: grid;
+  flex: 33.33%;
+  gap: 20px;
+  
+}
+/* .dark_mode {
+  
+} */
+
+.dark_mode_label {
+  width: 65px;
+  height: 30px;
+  position: relative;
+  display: block;
+  background: #ebebeb;
+  border-radius: 200px;
+  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4),
+      inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.dark_mode_label:after {
+  content: "";
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  background: linear-gradient(180deg, #ffcc89, #d8860b);
+  border-radius: 180px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+.dark_mode_input {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.dark_mode_input:checked + .dark_mode_label {
+  background: #242424;
+}
+.dark_mode_input:checked + .dark_mode_label:after {
+  left: 62px;
+  transform: translateX(-100%);
+  background: linear-gradient(180deg, #777, #3a3a3a);
+}
+.dark_mode_label:active:after {
+  width: 30px;
+}
+
+.dark_mode_label svg {
+  position: absolute;
+  width: 20px;
+  top: 5px;
+  z-index: 100;
+}
+.dark_mode_label svg.sun {
+  left: 5px;
+  fill: #fff;
+  transition: 0.3s;
+}
+.dark_mode_label svg.moon {
+  left: 40px;
+  fill: #7e7e7e;
+  transition: 0.3s;
+}
+.dark_mode_input:checked + .dark_mode_label svg.sun {
+  fill: #7e7e7e;
+}
+.dark_mode_input:checked + .dark_mode_label svg.moon {
+  fill: #fff;
+}
+
+  .AppItems .AppItems2 label{
+    color: var(--conn_name_color);
+    font-family: "GilroyMedium";
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .AppItems .AppItems2 select{
+    font-family: "GilroyMedium";
+    border: 1px solid var(--conn_name_color);
+    font-weight: 600;
+    width: 65%;
+    color: var(--conn_name_color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: transparent;
+  }
+  .AppItems .AppItems2  select option{
+    color:black;
+  }
+  .AppItems .AppItems2 select:focus{
+    border-color: #406de0; /* Change this to the desired border color */
+    outline: none;
+  }
+  .AppItems .AppItems3 label{
+    color: var(--conn_name_color);
+    font-family: "GilroyMedium";
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .AppItems .AppItems3 select{
+    font-family: "GilroyMedium";
+    border: 1px solid var(--conn_name_color);
+    font-weight: 600;
+    width: 65%;
+    color: var(--conn_name_color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: transparent;
+
+  }
+  .AppItems .AppItems3  select option{
+    color:black;
+  }
+  .AppItems .AppItems3 select:focus{
+    border-color: #406de0; /* Change this to the desired border color */
+    outline: none;
+  }
+
+.settingItems .settingVersion{
+  background: var(--background_color);
+  /* box-shadow: 0px 2px 12px 0px var(--box_shadow_alert_cards); */
+  border: 1px solid var(--border_bottom_alerts);
+  padding: 0px 0px 30px 0px;
+  margin-top: 25px;
+}
+.settingItems .settingVersion .settingVersionTit{
+  border-bottom: 1px solid var(--border_bottom_alerts);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.settingItems .settingVersion .settingVersionTit h4{
+  font-family: "GilroyMedium";
+  color: var(--conn_name_color);
+  font-size: 15px;
+  /* padding-top: 16px; */
+  margin-left: 20px;
+}
+.settingItems .settingVersion .settingVersionTit button{
+  font-family: "GilroyMedium";
+  color: var(--conn_name_color);
+  font-size: 14px;
+  height: 20px;
+}
+.settingItems .settingVersion .settingVersionLinks{
+  font-family: "GilroyMedium";
+  font-size: 15px;
+  padding-top: 16px;
+  margin-left: 20px;
+  gap: 15px;
+  
+}
+.settingVersionLinks a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: var(--conn_name_color);
+  text-decoration: underline;
+}
+.settingVersionLinks a:hover{
+  color: #406de0;
+  text-decoration: none;
+}
+.settingVersionLinks a:focus{
+  text-decoration: none;
+  color: #406de0;
+}
+.settingVersionLinks a:active{
+  text-decoration: none;
+  color: #406de0;
+}
+
+
+.settingVersionLinks a:last-child {
+  margin-right: 0;
+}

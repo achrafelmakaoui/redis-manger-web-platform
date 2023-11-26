@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.introBg{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.introDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    z-index: 2;
+    overflow-y: hidden;
+}
+.introDiv h1{
+    font-family: 'Montserrat',sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 5vw;
+    color: #0000F5;
+    position: relative;
+    -webkit-text-stroke: 0.08vw #000000;
+    filter: drop-shadow(0px 15px 5px rgba(0, 0, 0, 0.101));
+
+}
+.introDiv h1::after{
+    content: attr(text);
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    -webkit-text-stroke: 0.08vw #000000;
+    filter: drop-shadow(0px 15px 5px rgba(0, 0, 0, 0.002));
+ }
+ .lottieAnm{
+    width: 275px;
+ }
+ .Looding{
+  width: 350px;
+ }
+ /* Add this CSS to your existing intro.css file */
+@keyframes rocketAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+  
+  .rocketContent {
+    animation: rocketAnimation 2s forwards ;
+    animation-delay: 4s;
+  }
+  .loodingOpacity .Looding{
+    opacity: 0;
+  }
