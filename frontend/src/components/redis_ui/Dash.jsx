@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Dash.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlus,faPlus,faGear,faClock,faHouseLaptop,faTerminal,faList } from '@fortawesome/free-solid-svg-icons'
@@ -12,6 +12,8 @@ import NewKeyAlertt from '../NewKeyAlert/NewKeyAlert'
 import RedisDash from '../RedisDet/RedisDash'
 import DropDownContent from '../DropDown/DrowDopn'
 import Cli from '../CLI/Cli'
+import axios from 'axios';
+
 const Dash = () => {
   const [Alert,setAlert]=useState(false);
   const [Alert2,setAlert2]=useState(false);
@@ -23,26 +25,63 @@ const Dash = () => {
   const [showDropDown, setShowDropDown] = useState(false);
   const [Clii, setCli] = useState(false);
 
+  const [connections, setconnections] = useState([]);
+
+  useEffect(() => {
+    const getConnections = async () => {
+    let url = "http://localhost:5000/connections";
+    
+    try {
+        const res = await axios.get(url);
+        setconnections(res.data);
+    } catch (err) {
+        console.log(err);
+    }
+    };
+    getConnections();
+  },[connections]);
+
+  const handleSubmit = async (event) => {
+      event.preventDefault();
+      try {
+        const response = await axios.post(`http://localhost:5000/connect`, {
+          host: connections.host, 
+          port: connections.port, 
+          client_name: connections.client_name
+        });
+        console.log(response.data);
+        handelClickConn()
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
   const handelClickCli = ()=>{
     setCli(true);
     setFstDesignPage(false);
     setRedisPage(false);
   }
   // open conn
-  const handelClickConn = () => {
-    setConnDet(prevState => !prevState);
+
+  const handelClickConn = (index) => {
+    setConnDet((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index],
+    }));
     if(!ConnDet){
-      setFstDesignPage(false);
-      setRedisPage(true);
-      setCli(false);
+        setFstDesignPage(false);
+        setRedisPage(true);
+        setCli(false);
     }
     else{
-      setFstDesignPage(false);
-      setRedisPage(true);
-      setCli(false);
-
+        setFstDesignPage(false);
+        setRedisPage(true);
+        setCli(false);
+  
     }
+    // Other logic...
   };
+ 
   // new key
   const  newKeyHandelClick = () =>{
       setNewKeyAlert(true)
@@ -88,150 +127,54 @@ const Dash = () => {
           </div>
         </div>
         <div className='listConn'>
-            <div className='lstMap'>
+        {connections.map((connections, index) => (
+            <div className='lstMap' index={index}>
                 <div className='connName'>
-                    <h4>Magnet</h4>
+                    <h4>{connections.client_name}</h4>
                 </div>
                 <div className='connTaches'>
-                    <FontAwesomeIcon icon={faHouseLaptop} className='first' onClick={handelClickConn}/>
-                    <FontAwesomeIcon icon={faTerminal} className='second' onClick={handelClickCli}/>
-                    <FontAwesomeIcon icon={faList} className='third' onClick={() => setShowDropDown(true)}/>
+                    <FontAwesomeIcon icon={faHouseLaptop} className='first' onClick={handleSubmit} />
+                    <FontAwesomeIcon icon={faTerminal} className='second' onClick={handelClickCli} />
+                    <FontAwesomeIcon icon={faList} className='third' onClick={() => setShowDropDown(true)} />
                 </div>
-            </div>
-            {showDropDown && <DropDownContent onClose={() => setShowDropDown(false)} />}
-            {ConnDet && 
-            <div className='ConnDet'>
-                <div className='ConnDetRow1'>
-                    <div className='ConnDetItem1'>
-                        <select>
-                            <option>--select db--</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
+                {ConnDet[index] && (
+                <div className='ConnDet'>
+                    <div className='ConnDetRow1'>
+                        <div className='ConnDetItem1'>
+                            <select>
+                                <option>--select db--</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                        <div className='ConnDetItem2'>
+                            <button onClick={newKeyHandelClick}><FontAwesomeIcon icon={faPlus} className='CirclePlus' />New Key</button>
+                        </div>
                     </div>
-                    <div className='ConnDetItem2'>
-                        <button onClick={newKeyHandelClick}><FontAwesomeIcon icon={faPlus} className='CirclePlus'/>New Key</button>
+                    <div className='ConnDetRow2'>
+                        <input type='search' className='searchKey' placeholder='Enter to search' />
+                    </div>
+                    <div className='ConnDetRow3'>
+                        <h4>DATA</h4>
+                    </div>
+                    <div className='ConnDetRow4'>
+                        <button className='LoadData'>Load More</button>
+                        <button className='AllData'>Load All</button>
                     </div>
                 </div>
-                <div className='ConnDetRow2'>
-                    <input type='search' className='searchKey' placeholder='Entre to search'/>
-                </div>
-                <div className='ConnDetRow3'><h4>DATA</h4></div>
-                <div className='ConnDetRow4'>
-                    <button className='LoadData'>Load More</button>
-                    <button className='AllData'>Load All</button>
-                </div>
+                )}
             </div>
-            }
+        ))}
+        {showDropDown && <DropDownContent onClose={() => setShowDropDown(false)} />}
             {NewKeyAlert && <NewKeyAlertt handleClose={handleClickXMarkNewKey}/>}
-            <div className='lstMap'>
-                <div className='connName'>
-                    <h4>Pulse</h4>
-                </div>
-                <div className='connTaches'>
-                    <FontAwesomeIcon icon={faHouseLaptop} className='first'/>
-                    <FontAwesomeIcon icon={faTerminal} className='second'/>
-                    <FontAwesomeIcon icon={faList} className='third' onClick={() => setShowDropDown(true)}/>
-                </div>
-            </div>
-            <div className='lstMap'>
-                <div className='connName'>
-                    <h4>Pulse</h4>
-                </div>
-                <div className='connTaches'>
-                    <FontAwesomeIcon icon={faHouseLaptop} className='first'/>
-                    <FontAwesomeIcon icon={faTerminal} className='second'/>
-                    <FontAwesomeIcon icon={faList} className='third' onClick={() => setShowDropDown(true)}/>
-                </div>
-            </div>
-            <div className='lstMap'>
-                <div className='connName'>
-                    <h4>Pulse</h4>
-                </div>
-                <div className='connTaches'>
-                    <FontAwesomeIcon icon={faHouseLaptop} className='first'/>
-                    <FontAwesomeIcon icon={faTerminal} className='second'/>
-                    <FontAwesomeIcon icon={faList} className='third' onClick={() => setShowDropDown(true)}/>
-                </div>
-            </div>
-            <div className='lstMap'>
-                <div className='connName'>
-                    <h4>Pulse</h4>
-                </div>
-                <div className='connTaches'>
-                    <FontAwesomeIcon icon={faHouseLaptop} className='first'/>
-                    <FontAwesomeIcon icon={faTerminal} className='second'/>
-                    <FontAwesomeIcon icon={faList} className='third' onClick={() => setShowDropDown(true)}/>
-                </div>
-            </div>
-            <div className='lstMap'>
-                <div className='connName'>
-                    <h4>Pulse</h4>
-                </div>
-                <div className='connTaches'>
-                    <FontAwesomeIcon icon={faHouseLaptop} className='first'/>
-                    <FontAwesomeIcon icon={faTerminal} className='second'/>
-                    <FontAwesomeIcon icon={faList} className='third' onClick={() => setShowDropDown(true)}/>
-                </div>
-            </div>
-            <div className='lstMap'>
-                <div className='connName'>
-                    <h4>Pulse</h4>
-                </div>
-                <div className='connTaches'>
-                    <FontAwesomeIcon icon={faHouseLaptop} className='first'/>
-                    <FontAwesomeIcon icon={faTerminal} className='second'/>
-                    <FontAwesomeIcon icon={faList} className='third' onClick={() => setShowDropDown(true)}/>
-                </div>
-            </div>
-            <div className='lstMap'>
-                <div className='connName'>
-                    <h4>Pulse</h4>
-                </div>
-                <div className='connTaches'>
-                    <FontAwesomeIcon icon={faHouseLaptop} className='first'/>
-                    <FontAwesomeIcon icon={faTerminal} className='second'/>
-                    <FontAwesomeIcon icon={faList} className='third' onClick={() => setShowDropDown(true)}/>
-                </div>
-            </div>
-            <div className='lstMap'>
-                <div className='connName'>
-                    <h4>Pulse</h4>
-                </div>
-                <div className='connTaches'>
-                    <FontAwesomeIcon icon={faHouseLaptop} className='first'/>
-                    <FontAwesomeIcon icon={faTerminal} className='second'/>
-                    <FontAwesomeIcon icon={faList} className='third' onClick={() => setShowDropDown(true)}/>
-                </div>
-            </div>
-            <div className='lstMap'>
-                <div className='connName'>
-                    <h4>Pulse</h4>
-                </div>
-                <div className='connTaches'>
-                    <FontAwesomeIcon icon={faHouseLaptop} className='first'/>
-                    <FontAwesomeIcon icon={faTerminal} className='second'/>
-                    <FontAwesomeIcon icon={faList} className='third' onClick={() => setShowDropDown(true)}/>
-                </div>
-            </div>
-            <div className='lstMap'>
-                <div className='connName'>
-                    <h4>Pulse</h4>
-                </div>
-                <div className='connTaches'>
-                    <FontAwesomeIcon icon={faHouseLaptop} className='first'/>
-                    <FontAwesomeIcon icon={faTerminal} className='second'/>
-                    <FontAwesomeIcon icon={faList} className='third' onClick={() => setShowDropDown(true)}/>
-                </div>
-            </div>
         </div>
       </div>
       {Clii && <Cli text='Redis Magnet'/>}
       {FstDesignPage && <FstDesign handelClick={handelClick}/>}
       {RedisPage && <RedisDash/>}
-      {Alert && <NewConnAlert handleClose={handleClickXMark}/>}
+      {Alert && <NewConnAlert handleClose={handleClickXMark} oneNewConnection={connections=>setconnections(currentConnection=>[connections,currentConnection])}/>}
       {Alert2 && <SettingAlert handleClose={handleClickSettingXMark}/>}
       {Alert3 && <LogAlert handleClose={handleClickLogXMark}/>}
     </div>

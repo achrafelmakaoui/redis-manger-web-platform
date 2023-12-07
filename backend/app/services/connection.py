@@ -22,28 +22,28 @@ class Conn:
         
         host = creds.get("host")
         port = creds.get("port")
-        username = creds.get("username")
-        password = creds.get("password")
-        db = creds.get("db")
-        try:
-            self.disconnect()
-            self.connection = redis.Redis(host=host, port=port, username=username, password=password, client_name=client_name, db=db)
+        # username = creds.get("username") or None
+        # password = creds.get("password") or None
+        # db = creds.get("db") or None
+        # try:
+        self.disconnect()
+        # self.connection = redis.Redis(host=host, port=port, username=username, password=password, client_name=client_name, db=db)
+        self.connection = redis.Redis(host=host, port=port, client_name=client_name)
+        if (self.connection.ping()):
 
-            if (self.connection.ping()):
+            connection_info = self.connection.get_connection_kwargs()
 
-                connection_info = self.connection.get_connection_kwargs()
-
-                changed = False
-                if not Conn.if_conn_in_connections_list(connection_info["client_name"], redis_connections):
-                    
-                    redis_connections.append(connection_info)
-                    self.update_connections(redis_connections=redis_connections)
-                    changed = True
-                return jsonify({"message": "Connected to Redis server.", "conn_info":changed})
+            changed = False
+            if not Conn.if_conn_in_connections_list(connection_info["client_name"], redis_connections):
+                
+                redis_connections.append(connection_info)
+                self.update_connections(redis_connections=redis_connections)
+                changed = True
+            return jsonify({"message": "Connected to Redis server.", "conn_info":changed})
             
-        except Exception as e:
+        # except Exception as e:
 
-            return jsonify({"error": "connection"})
+        #     return jsonify({"error": "connection"})
 
 
 
@@ -87,6 +87,7 @@ class Conn:
 
     def compare_conn_name(self, conn_name):
         if self.testconnection():
+            print(self.connection)
             conn_creds = self.connection.get_connection_kwargs()
             return conn_creds["client_name"] == conn_name
         return 0

@@ -7,9 +7,8 @@ base_url = 'http://localhost:5000/connect'
 data = {"host": "127.0.0.1", "port": 6379, "username": None,
         "password": None, "client_name": "hadoop"}
 
-for i in range(2):
-    response = requests.post(base_url, json=data)
-    print((response.text))
+response = requests.post(base_url, json=data)
+print((response.text))
 
 
 # disconnection test
