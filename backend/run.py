@@ -21,7 +21,6 @@ redis_connections = connection.Conn.get_connections()
 
 @app.route('/connect', methods=['POST'])
 def connect():
-    
 
     creds = request.get_json()
     global redis_conn, redis_connections
@@ -81,8 +80,9 @@ def exec_command():
         if redis_conn.connection:
             data = request.get_json()
             command = data["command"]
-            return Command.exec_command(redis_conn, command)
-
+            responce = (Command.exec_command(redis_conn, command))
+            print(responce)
+            return (responce)
     return jsonify({"error": "connection not established!"})
 
 
@@ -116,4 +116,4 @@ def keys():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=5000,debug=True,threaded=True)

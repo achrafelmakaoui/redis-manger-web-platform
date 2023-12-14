@@ -9,7 +9,8 @@ function App() {
       <ThemeProvider>
           <Routes>
               <Route path="/" element={<Intro/>}/>
-              <Route path="/redis" element={<Dash/>}/>
+              <Route path="/Dashboard" element={<Dash/>}/>
+              <Route path="/Dashboard/:connName" element={<Dash/>}/>
           </Routes>
       </ThemeProvider>
     </div>
