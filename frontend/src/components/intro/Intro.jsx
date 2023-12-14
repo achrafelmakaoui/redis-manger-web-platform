@@ -36,7 +36,7 @@ const Intro = () => {
 
   setTimeout(() => {
     document.body.classList.remove('rocketContent');
-    navigate('/redis');
+    navigate('/Dashboard');
   },[5000]);
 
   

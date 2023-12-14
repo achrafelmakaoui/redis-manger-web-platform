@@ -14,7 +14,7 @@ class Command:
             if isinstance(response, bytes):
                 response = (response.decode('utf-8'))
                 
-            response = jsonify({'response': str(response)})
+            response = jsonify({'result': str(response)})
 
         except Exception as e:
                 response = jsonify({"error": str(e)})
