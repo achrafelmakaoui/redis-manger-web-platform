@@ -1,5 +1,6 @@
 import json
 import os
+import time
 from flask import jsonify, request, session
 import redis
 
@@ -10,9 +11,9 @@ class Conn:
     def __init__ (self):
         self.connection = None
 
+    
 
-
-    def connect(self, creds, redis_connections:list):
+    def connect(self, creds, redis_connections:list = None):
 
         client_name = creds.get("client_name")
 
@@ -22,16 +23,18 @@ class Conn:
         
         host = creds.get("host")
         port = creds.get("port")
-        # username = creds.get("username") or None
-        # password = creds.get("password") or None
-        # db = creds.get("db") or None
+        username = creds.get("username") or None
+        password = creds.get("password") or None
+        db = creds.get("db") or None
+        print(db)
         # try:
         self.disconnect()
-        # self.connection = redis.Redis(host=host, port=port, username=username, password=password, client_name=client_name, db=db)
-        self.connection = redis.Redis(host=host, port=port, client_name=client_name)
+        self.connection = redis.Redis(host=host, port=port, username=username, password=password, client_name=client_name, db=db)
+        print(self.connection.scan_iter())
         if (self.connection.ping()):
 
             connection_info = self.connection.get_connection_kwargs()
+            print(connection_info)
 
             changed = False
             if not Conn.if_conn_in_connections_list(connection_info["client_name"], redis_connections):
@@ -46,7 +49,27 @@ class Conn:
         #     return jsonify({"error": "connection"})
 
 
+    def use_other_db(self, db):
+        
+        try:
+            connection_info = self.connection.get_connection_kwargs()
+            self.disconnect()
+            connection_info["db"] = db
+            print(connection_info)
+            self.connection = redis.Redis(host=connection_info['host'], port=connection_info['port'], username=connection_info['username'], password=connection_info['password'], client_name=connection_info['client_name'], db=connection_info['db'])
+            # time.sleep(1)
+            temp_res = self.connection.keys()
+            print('keys: ', temp_res)
+            responce = []
+            for key in temp_res:
+                responce.append(str(key))
+            return ({"response": responce}) 
+        
+        except Exception as e:
+            return ({"error": str(e)})
+         
 
+    
     def testconnection(self):
         if self.connection:
 
@@ -142,10 +165,10 @@ class Conn:
 
         if Conn.if_conn_in_connections_list(client_conn_to_update, redis_connections)   :
             if not Conn.if_conn_in_connections_list(new_client_conn["client_name"], redis_connections):
-                if Conn.validate_client(new_client_conn["host"], new_client_conn["port"], new_client_conn["username"], new_client_conn["password"]):
+                if Conn.validate_client(new_client_conn["host"], new_client_conn["port"]):
+                    # , new_client_conn["username"], new_client_conn["password"]
                     if current_conn.compare_conn_name(client_conn_to_update):
                         current_conn.disconnect()
-
 
                     
                     for i in range(len(redis_connections)):

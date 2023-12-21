@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './RedisDash.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faServer,faDatabase,faChartColumn} from '@fortawesome/free-solid-svg-icons'
@@ -12,9 +12,13 @@ import {
     Legend,
   } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-  
-
+import { faTrashCan,faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios';
+import { useLocation } from "react-router-dom";
+import AlertEditConn from '../AlertEditConn/AlertEditConn';
 const RedisDash = () => {
+  const [EditAlert,setEditAlert]=useState(false);
+    const location = useLocation();
     ChartJS.register(
         CategoryScale,
         LinearScale,
@@ -61,13 +65,32 @@ const RedisDash = () => {
           },
         ],
       };
-      
-
+      const handelDelConnection = async () => {
+        try {
+          const response = await axios.delete(`http://localhost:5000/connections`, {
+            data: { client_name: location.pathname.split("/")[2] }
+          });
+          console.log(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      }; 
+      const handelShowEditAlert =  () => {
+          setEditAlert(true);
+      }
+      const handleClickEditXMark = () => {
+        setEditAlert(false)
+      }
   return (
     <>
     <div className='RedisDash'>
-        <div className='RedisDashHed'>
-            <h2>Redis Magnet Info</h2>
+        <div className="editDel">
+          <div className='editCon'>
+            <button onClick={handelShowEditAlert}><FontAwesomeIcon icon={faPenToSquare} className='faCirclePlus'/>Edit connection</button>
+          </div>
+          <div className='delCon'>
+              <button onClick={handelDelConnection}><FontAwesomeIcon icon={faTrashCan} className='faClock' />Delete connection</button>
+          </div>
         </div>
         <div className='RedisDashRow1'>
             <div className='Row1Card1'>
@@ -132,6 +155,7 @@ const RedisDash = () => {
             <Bar data={data} options={options} />
         </div> 
     </div>
+    {EditAlert && <><AlertEditConn handleClose={handleClickEditXMark}/></>}
     </>
   )
 }

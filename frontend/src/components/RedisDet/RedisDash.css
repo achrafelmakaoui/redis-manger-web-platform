@@ -52,7 +52,53 @@
 
 .RedisDash{
     width: 100%;
-    padding: 0px 20px 0px 20px;
+    padding: 7px 20px 0px 20px;
+}
+.editDel{
+    display: flex;
+    gap: 6px;
+    padding: 0px 0px 15px 0px;
+}
+.editCon button{
+    width: 180px;
+    padding: 5px 10px;
+    gap: 3px;
+    color: white;
+    background-color: rgba(172, 169, 169, 0.779);
+    border: 1px solid rgba(172, 169, 169, 0.779);
+    border-radius: 3px;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+}
+.editCon button:hover{
+    border: 1px solid rgba(172, 169, 169, 0.858);
+    color: rgba(255, 255, 255, 0.94);
+    background-color: rgb(172, 169, 169);
+}
+.delCon button{
+    width: 180px;
+    padding: 5px 10px;
+    gap: 3px;
+    background-color: #e845459f;
+    border:1px solid #ff5656;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #ffffffdc;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 500;
+}
+.delCon button:hover{
+    background-color: #ea3838d8;
+    color: rgba(255, 255, 255, 0.951);
+}
+.editCon button .faCirclePlus{
+    width: 0.75rem;
+    padding: 0px 4px 0px 0px;   
+}
+.delCon button .faClock{
+    width: 0.75rem;
+    padding: 0px 4px 0px 0px;   
 }
 .RedisDash .RedisDashHed{
     display: flex;
@@ -71,7 +117,7 @@
 }
 
 .RedisDash .RedisDashRow1{
-    padding-top: 0px;
+    padding-top: 4px;
     display: flex;
     justify-content: center;
     align-items: center;

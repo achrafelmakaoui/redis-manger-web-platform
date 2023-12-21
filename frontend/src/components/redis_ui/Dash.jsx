@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import './Dash.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCirclePlus,faPlus,faGear,faClock,faHouseLaptop,faTerminal,faList } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlus,faPlus,faGear,faClock,faHouseLaptop,faTerminal } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import NewConnAlert from '../newConAlert/newConAlert'
 import SettingAlert from '../settingAlert/SettingAlert'
@@ -10,7 +10,6 @@ import FstDesign from '../firstpagedesign/FstDesign'
 import '../connections/Conn.css'
 import NewKeyAlertt from '../NewKeyAlert/NewKeyAlert'
 import RedisDash from '../RedisDet/RedisDash'
-import DropDownContent from '../DropDown/DrowDopn'
 import Cli from '../CLI/Cli'
 import axios from 'axios';
 import { Link } from "react-router-dom";
@@ -20,57 +19,58 @@ const Dash = () => {
   const [Alert,setAlert]=useState(false);
   const [Alert2,setAlert2]=useState(false);
   const [Alert3,setAlert3]=useState(false);
-  // const [ConnDet,setConnDet] = useState(false);
   const [NewKeyAlert,setNewKeyAlert]=useState(false);
   const [FstDesignPage,setFstDesignPage]=useState(true);
   const [RedisPage,setRedisPage]=useState(false);
-  const [showDropDown, setShowDropDown] = useState(false);
   const [Clii, setCli] = useState(false);
   const [connections, setconnections] = useState([]);
-  const [connections2, setconnections2] = useState([]);
-  const [connDetStates, setConnDetStates] = useState(connections.map(() => false));
+  const [connDetStates, setConnDetStates] = useState(Array(connections.length).fill(false));
+  // const [connDetStates, setConnDetStates] = useState(true);
+  const [selectedDb, setSelectedDb] = useState();
+  const [keys, setKeys] = useState([]);
   const location = useLocation();
-  const connName = location.pathname.split("/")[2];
 
   useEffect(() => {
-    const getConnections = async () => {
-    let url = "http://192.168.1.102:5000/connections";
-    
-    try {
-        const res = await axios.get(url);
-        setconnections(res.data);
-    } catch (err) {
-        console.log(err);
-    }
+    const getConnections = async () => {  
+      let url = "http://localhost:5000/connections";
+      try {
+          const res = await axios.get(url);
+          setconnections(res.data);
+      } catch (err) {
+          console.log(err);
+      }
     };
     getConnections();
   },[connections]);
 
-  // const handelConnect = ()=>{
-  //   try {
-  //     const result = axios.post(`http://192.168.1.102:5000/connect`, {
-  //       host:'127.0.0.1', 
-  //       port:'6379', 
-  //       client_name: connName
-  //     });
-  //     console.log(result.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
+
   const handelConnect = async () => {
     try {
-      const response = await axios.post(`http://192.168.1.102:5000/connect`, {
+      const response = await axios.post(`http://localhost:5000/connect`, {
         host:'127.0.0.1', 
         port:6379, 
-        client_name: connName
+        client_name: location.pathname.split("/")[2]
       });
       console.log(response.data);
+      handelChooseDb();
     } catch (error) {
       console.error(error);
     }
   };
-
+  const handelChooseDb = async (e) => {
+    try {
+      setSelectedDb(e.target.value)
+      const response = await axios.post(`http://localhost:5000/change_db`, {
+        db: parseInt(e.target.value),
+      });
+      setKeys(response.data.response);
+      console.log(response.data);
+      console.log(keys);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
   const handelClickCli = ()=>{
     setCli(true);
     setFstDesignPage(false);
@@ -78,54 +78,55 @@ const Dash = () => {
   }
   // open conn
 
-  const handelClickConn = (index) => {
-    setConnDetStates((prevState) => {
-      const newState = Array(prevState.length).fill(false);
-      newState[index] = !prevState[index];
-      return newState;
-    });
-    // Use the state for the specific connection index
-    if (!connDetStates[index]) {
-      setFstDesignPage(false);
-      setRedisPage(true);
-      setCli(false);
-    } else {
-      setFstDesignPage(true); // Adjust this based on your logic
-      setRedisPage(false);
-      setCli(false);
-    }
-    // Other logic...
-  };
+  // const handelClickConn = () => {
+  //   if (!connDetStates) {
+  //     setFstDesignPage(false);
+  //     setRedisPage(true);
+  //     setCli(false);
+  //     newKeyHandelClick(true)
+
+  //   } else {
+  //     newKeyHandelClick(true)
+  //     setFstDesignPage(false);
+  //     setRedisPage(false);
+  //     setCli(false);
+  //   }
+  // };
   
   // new key
-  const  newKeyHandelClick = () =>{
+  const  newKeyHandelClick = () => {
       setNewKeyAlert(true)
   }
-  const handleClickXMarkNewKey = ()=>{
+  const handleClickXMarkNewKey = () => {
       setNewKeyAlert(false)
   } 
   // new connection
-  const  handelClick = () =>{
+  const  handelClick = () => {
     setAlert(true)
   }
-  const handleClickXMark = ()=>{
+  const handleClickXMark = () => {
     setAlert(false)
   }
   // setting
-  const  handelClick2 = () =>{
+  const  handelClick2 = () => {
     setAlert2(true)
   }
-  const handleClickSettingXMark = ()=>{
+  const handleClickSettingXMark = () => {
     setAlert2(false)
   }
   // log
-  const  handelClick3 = () =>{
+  const  handelClick3 = () => {
     setAlert3(true)
   }
-  const handleClickLogXMark = ()=>{
+  const handleClickLogXMark = () => {
     setAlert3(false)
   }
-  
+  const handleConnectionClick = (index) => {
+    handelConnect()
+    const newConnDetStates = [...connDetStates];
+    newConnDetStates[index] = !newConnDetStates[index];
+    setConnDetStates(newConnDetStates);
+  };
 
   return (
     <div className='ConPg'>
@@ -144,39 +145,57 @@ const Dash = () => {
         <div className='listConn'>
         {connections.map((connections, index) => (
            <React.Fragment key={index}>
-            <Link to={`/Dashboard/${connections.client_name}`}>
               <div className='lstMap' index={index}>
                   <div className='connName'>
-                      <h4 onClick={handelConnect}>{connections.client_name}</h4>
+                      <Link to={`/Dashboard/${connections.client_name}`}>
+                        <h4 onClick={handelConnect}>{connections.client_name}</h4>
+                      </Link>
                   </div>
                   <div className='connTaches'>
-                      <FontAwesomeIcon icon={faHouseLaptop} className='first' onClick={handelClickConn} />
-                      <FontAwesomeIcon icon={faTerminal} className='second' onClick={handelClickCli} />
-                      <FontAwesomeIcon icon={faList} className='third' onClick={() => setShowDropDown(true)} />
+                      <Link to={`/Dashboard/${connections.client_name}`} onClick={() => handleConnectionClick(index)}>
+                          <FontAwesomeIcon icon={faHouseLaptop} id={connections.client_name} className='first'/>
+                      </Link>
+                      <Link to={`/Dashboard/${connections.client_name}`}>
+                          <FontAwesomeIcon icon={faTerminal} className='second' onClick={handelClickCli} />
+                      </Link>
                   </div>
               </div>
-            </Link>
             {connDetStates[index] && (
               <div className='ConnDet'>
                   <div className='ConnDetRow1'>
                       <div className='ConnDetItem1'>
-                          <select>
-                              <option>--select db--</option>
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
+                          <select value={selectedDb} onChange={(e) => handelChooseDb(e)}>
+                              <option value=''>--Choose DB--</option>
+                              <option value='0'>DB0</option>
+                              <option value='1'>DB1</option>
+                              <option value='2'>DB2</option>
+                              <option value='3'>DB3</option>
+                              <option value='4'>DB4</option>
+                              <option value='5'>DB5</option>
+                              <option value='6'>DB6</option>
+                              <option value='7'>DB7</option>
+                              <option value='8'>DB8</option>
+                              <option value='9'>DB9</option>
+                              <option value='10'>DB10</option>
+                              <option value='11'>DB11</option>
+                              <option value='12'>DB12</option>
+                              <option value='13'>DB13</option>
+                              <option value='14'>DB14</option>
+                              <option value='15'>DB15</option>
                           </select>
                       </div>
                       <div className='ConnDetItem2'>
-                          <button onClick={newKeyHandelClick}><FontAwesomeIcon icon={faPlus} className='CirclePlus' />New Key</button>
+                          <button onClick={newKeyHandelClick}><FontAwesomeIcon icon={faPlus} className='CirclePlus'/>New Key</button>
                       </div>
                   </div>
                   <div className='ConnDetRow2'>
                       <input type='search' className='searchKey' placeholder='Enter to search' />
                   </div>
                   <div className='ConnDetRow3'>
-                      <h4>DATA</h4>
+                    {keys.slice(-5).map((key, index) => (
+                      <h4 key={index}>{key.replace(/^b'|'$/g, '')}</h4>
+                    ))}
+
                   </div>
                   <div className='ConnDetRow4'>
                       <button className='LoadData'>Load More</button>
@@ -186,11 +205,10 @@ const Dash = () => {
               )}
               </React.Fragment>
         ))}
-        {showDropDown && <DropDownContent onClose={() => setShowDropDown(false)} />}
-        {NewKeyAlert && <NewKeyAlertt handleClose={handleClickXMarkNewKey}/>}
         </div>
       </div>
       {Clii && <Cli text='Redis Magnet'/>}
+      {NewKeyAlert && <NewKeyAlertt handleClose={handleClickXMarkNewKey}/>}
       {RedisPage && <RedisDash/>}
       {FstDesignPage && <FstDesign handelClick={handelClick}/>}
       {Alert && <NewConnAlert handleClose={handleClickXMark} oneNewConnection={connections=>setconnections(currentConnection=>[connections,currentConnection])}/>}

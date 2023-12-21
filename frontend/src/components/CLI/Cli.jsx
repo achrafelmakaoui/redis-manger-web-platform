@@ -16,7 +16,7 @@ const Cli = () => {
             // Modify the command before sending
             const modifiedCommand = Command === 'MAGNET' ? 'PING' : Command;
     
-            const response = await fetch('http://192.168.1.102:5000/command', {
+            const response = await fetch('http://localhost:5000/command', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

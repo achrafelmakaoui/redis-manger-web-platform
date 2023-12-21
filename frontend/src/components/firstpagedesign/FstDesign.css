@@ -127,6 +127,7 @@
     padding: 10px 20px;
     color: white;
     border: 1px solid rgb(36, 36, 36);
+    cursor: pointer;
 }
 .fstDesign .stLayout .cardDes .cardDesDesc .cardBtn button:hover{
     font-family: 'Montserrat',sans-serif;

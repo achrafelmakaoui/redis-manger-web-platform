@@ -79,23 +79,31 @@ const FstDesign = ({handelClick}) => {
                     <div className='frontTools'>
                         <div className='html'>
                             <img src={Html} alt='Html'/>
+                            {/* <img src="https://skillicons.dev/icons?i=html" alt="skill-icon"/> */}
                         </div>
                         <div className='react'>
                             <img src={ReactJs} alt='ReactJs'/>
+                            {/* <img src="https://skillicons.dev/icons?i=react" alt="skill-icon"/> */}
                         </div>
                         <div className='css'>
                             <img src={Css} alt='css'/>
+                            {/* <img src="https://skillicons.dev/icons?i=css" alt="skill-icon"/> */}
                         </div>
                     </div>
                     <div className='backTools'>
                         <div className='flask'>
                             <img src={Flask} alt='flask'/>
+                            {/* <img src="https://skillicons.dev/icons?i=flask" alt="skill-icon"/> */}
+
                         </div>
                         <div className='redis'>
                             <img src={Redis} alt='redis'/>
+                            {/* <img src="https://skillicons.dev/icons?i=redis" alt="skill-icon"/> */}
+
                         </div>
                         <div className='redux'>
                             <img src={Redux} alt='redux'/>
+                            {/* <img src="https://skillicons.dev/icons?i=redux" alt="skill-icon"/> */}
                         </div>
                     </div>
                 </div>
