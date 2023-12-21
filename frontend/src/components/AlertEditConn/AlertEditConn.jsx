@@ -1,24 +1,59 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { motion } from "framer-motion";
-import './newConAlert.css'
+import './AlertEditConn.css'
 import axios from 'axios';
-const NewConAlert = ({ handleClose }) => {
-  
+import { useLocation } from "react-router-dom";
+
+const AlertEditConn = ({ handleClose }) => {
     const [host, setHost]=useState("");
     const [port, setPort]=useState("");
     const [password, setPassword]=useState("");
     const [username, setUsername]=useState("");
     const [connName, setConnName]=useState("");
+    const [connection, setconnection]=useState({});
+    // const [FiltredConnection, setFiltredConnection]=useState({});
+    const location = useLocation();
+    const client_name=location.pathname.split("/")[2]
+
+    useEffect(() => {
+      const getConnections = async () => {  
+        let url = "http://localhost:5000/connections";
+        try {
+            const res = await axios.get(url);
+            setconnection(res.data);
+            // Filter connections based on client_name
+            const filteredConnections = res.data.filter(conn => conn.client_name === client_name);
+    
+            // Assuming res.data is an array and you want the first item
+            if (filteredConnections.length > 0) {
+              const firstConnection = filteredConnections[0];
+              setHost(firstConnection.host);
+              setPort(firstConnection.port.toString());
+              setPassword(firstConnection.password);
+              setUsername(firstConnection.username);
+              setConnName(firstConnection.client_name);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+      };
+      getConnections();
+    }, [client_name]);
+    
+    console.log(connection)
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          const response = await axios.post(`http://localhost:5000/connect`, {
-            host: host, 
-            port:parseInt(port), 
-            client_name: connName
+          const response = await axios.put(`http://192.168.1.102:5000/connections`, {
+            client_name:client_name,
+            new_client: {
+              host: host,
+              port: parseInt(port),
+              client_name: connName,
+            }
           });
           console.log(response.data);
           handleClose()
@@ -28,8 +63,7 @@ const NewConAlert = ({ handleClose }) => {
       };
       const handleCancel = (event) => {
         event.preventDefault();
-        // Add any additional logic for canceling here
-        handleClose(); // Close the modal or handle cancellation as needed
+        handleClose();
       };
   return (
     <div className='motionDiv'>
@@ -41,7 +75,7 @@ const NewConAlert = ({ handleClose }) => {
       >
         <div className='coLgFrst'>
           <div className='connTit'>
-            <h3>New Connection</h3>
+            <h3>Edit Connection</h3>
           </div>
           <div className='xMarkIcon'>
             <FontAwesomeIcon icon={faXmark} className='xMark' onClick={handleClose}/>
@@ -51,11 +85,11 @@ const NewConAlert = ({ handleClose }) => {
         <div className='itemsConn'>
           <div className='itemConn1'>
             <label><mark style={{color:'red',backgroundColor:'transparent'}}>*</mark> Host</label>
-            <input type='text' placeholder='127.0.0.1' value={host} onChange={(event) => setHost(event.target.value)}/>
+            <input type='text' placeholder={host} value={host} onChange={(event) => setHost(event.target.value)}/>
           </div>
           <div className='itemConn2'>
             <label><mark style={{color:'red',backgroundColor:'transparent'}}>*</mark> Port</label>
-            <input type='number' placeholder='6379' value={port} onChange={(event) => setPort(event.target.value)}/>
+            <input type='number' placeholder={port} value={port} onChange={(event) => setPort(event.target.value)}/>
           </div>
           <div className='itemConn3'>
             <label>Password</label>
@@ -67,7 +101,7 @@ const NewConAlert = ({ handleClose }) => {
           </div>
           <div className='itemConn5'>
             <label>Connection Name</label>
-            <input type='text' placeholder='Connection name' value={connName} onChange={(event) => setConnName(event.target.value)}/>
+            <input type='text' placeholder={connName} value={connName} onChange={(event) => setConnName(event.target.value)}/>
           </div>
           <div className='itemConn6'>
             <label>Separator</label>
@@ -84,4 +118,4 @@ const NewConAlert = ({ handleClose }) => {
   )
 }
 
-export default NewConAlert
+export default AlertEditConn

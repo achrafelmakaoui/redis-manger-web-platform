@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { motion } from "framer-motion";
 import './NewKeyAlert.css'
+import axios from 'axios';
 
 const NewKeyAlert = ({ handleClose }) => {
   
-  
+  const [Key, setKey]=useState("");
+  const [Value, setValue]=useState("");
+
+  const handleSubmit = async () => {
+        try {
+          const response = await axios.post(`http://localhost:5000/keys`, {
+            key: Key, 
+            value:Value
+          });
+          console.log(response.data);
+          handleClose()
+        } catch (error) {
+          console.error(error);
+        }
+      };
   return (
     <div className='NewKeymotionDiv'>
         <motion.div
@@ -26,22 +41,16 @@ const NewKeyAlert = ({ handleClose }) => {
         <div className='newkeyitemsConn'>
           <div className='newkeyitemConn1'>
             <label>Key Name</label>
-            <input type='text' placeholder='Entre Key'/>
+            <input type='text' placeholder='Entre Key' value={Key} onChange={(event) => setKey(event.target.value)}/>
           </div>
           <div className='newkeyitemConn2'>
-            <label>Key Type</label>
-            <select>
-                <option value="">--select Type--</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-            </select>
+            <label>Value</label>
+            <input type='text' placeholder='Entre Value' value={Value} onChange={(event) => setValue(event.target.value)}/>
           </div>
         </div>
         <div className='butnReq'>
-          <button className='cacelBtn'>Cancel</button>
-          <button className='okBtn'>OK</button>
+          <button className='cacelBtn' onClick={handleClose}>Cancel</button>
+          <button className='okBtn' onClick={handleSubmit}>OK</button>
         </div>
       </motion.div>
       </div>

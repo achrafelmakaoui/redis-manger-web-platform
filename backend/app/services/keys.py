@@ -1,16 +1,17 @@
 from flask import jsonify
 
-
 class Keys:
     def __init__(self) -> None:
         pass
 
+    
     @staticmethod
     def set_key_value(redis_conn, key, value):
 
         try:
-            responce = (redis_conn.connection.set(key, value))
-
+                 
+            responce = redis_conn.connection.set(key, value)
+            
             if responce :
 
                 responce = jsonify({'message': "success"})

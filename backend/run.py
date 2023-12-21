@@ -1,6 +1,6 @@
 
 from flask import jsonify, request
-# from app.services.connection import Conn
+from app.services.connection import Conn
 from app.services import connection
 from app.services.command import Command
 from app.services.keys import Keys
@@ -37,6 +37,14 @@ def connect():
 
     return responce
 
+@app.route('/change_db', methods=['POST'])
+def  use_other_db():
+    
+    global redis_conn, redis_connections
+    creds = request.get_json() 
+    return jsonify(redis_conn.use_other_db(creds['db']))
+    
+    
 
 @app.route('/disconnect', methods=['POST'])
 def disconnect():
@@ -84,6 +92,8 @@ def exec_command():
             print(responce)
             return (responce)
     return jsonify({"error": "connection not established!"})
+
+
 
 
 # Keys

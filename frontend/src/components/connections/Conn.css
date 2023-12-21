@@ -55,6 +55,9 @@
     /* height: 98vh; */
     /* overflow-y: scroll; */
 }
+.listConn a {
+    text-decoration: none;
+}
 .listConn .lstMap{
     display: flex;
     justify-content: space-between;
@@ -63,6 +66,8 @@
     height: 50px;
     border-radius: 2px;
     cursor: pointer;
+    text-decoration: none;
+
 }
 .listConn .lstMap:hover{
     background-color: #4545e877;
@@ -81,6 +86,7 @@
     font-family: "GilroyMedium";
     font-size: 15px;
     color: var(--conn_name_color);
+    text-decoration: none;
 }
 .listConn .lstMap .connTaches{
     display: flex;
@@ -128,9 +134,15 @@
     align-items: center;
     gap: 5px;
     padding-bottom: 8px;
+    width: 100%;
+}
+.ConnDet .ConnDetRow2{
+    display: grid;
+    gap: 5px;
+    padding-bottom: 8px;
 }
 .ConnDet .ConnDetRow1 .ConnDetItem1{
-    width: 50%;
+    width: 55%;
 }
 .ConnDet .ConnDetRow1 .ConnDetItem1 select{
     width: 100%;
@@ -151,7 +163,7 @@
     outline: none;
 }
 .ConnDet .ConnDetRow1 .ConnDetItem2{
-    width: 50%;
+    width: 45%;
 }
 .ConnDet .ConnDetRow1 .ConnDetItem2 button{
     width: 100%;
@@ -176,9 +188,31 @@
     height:0.80rem ;
 }
 
-/* .ConnDet .ConnDetRow2{
+/* ///////////// */
 
-} */
+.ConnDet .ConnDetRow2 .ConnDetItem2 button{
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--border_bottom_alerts);
+    color: var(--conn_name_color);
+    font-family: "GilroyMedium";
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4.5px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.ConnDet .ConnDetRow2 .ConnDetItem2 button:hover{
+    background-color: #4545e877;
+    border: 1px solid #4545e877;
+
+}
+.ConnDet .ConnDetRow2 .ConnDetItem2 button .CirclePlus{
+    padding-right: 6px;
+    width:0.80rem ;
+    height:0.80rem ;
+}
+
 .ConnDet .ConnDetRow2 .searchKey{
     width: 100%;
     font-family: "GilroyMedium";
