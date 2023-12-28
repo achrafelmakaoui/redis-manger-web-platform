@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './RedisDash.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faServer,faDatabase,faChartColumn} from '@fortawesome/free-solid-svg-icons'
@@ -30,6 +30,36 @@ import { Line } from 'react-chartjs-2';
 
 const RedisDash = () => {
   const [EditAlert,setEditAlert]=useState(false);
+  const [Data,setData]=useState(null);
+  const [DbState,setDbState]=useState({});
+
+  useEffect(() => {
+    const getData = async () => {  
+      let url = "http://192.168.1.105:5000/monitor";
+      try {
+          const res = await axios.get(url);
+          setData(res.data);
+          console.log(res.data)
+      } catch (err) {
+          console.log(err);
+      }
+    };
+    getData();
+  },[]);
+  useEffect(() => {
+    const getDbState = async () => {  
+      let url = "http://192.168.1.105:5000/dbs_stats";
+      try {
+          const res = await axios.get(url);
+          setDbState(res.data);
+          console.log(res.data)
+      } catch (err) {
+          console.log(err);
+      }
+    };
+    getDbState();
+  },[]);
+
     const location = useLocation();
     ChartJS.register(
       CategoryScale,
@@ -52,28 +82,99 @@ const RedisDash = () => {
           text: 'Chart.js Line Chart',
         },
       },
+      scales: {
+        x: {
+          beginAtZero: true, // You can customize this based on your needs
+          title: {
+            display: true,
+            text: 'List Of Dbs',
+          },
+        },
+        y: {
+          beginAtZero: true, // Set to true if you want the scale to start at zero
+          title: {
+            display: true,
+            text: 'Number of Keys',
+          },
+          ticks: {
+            stepSize: 1, // Customize based on your needs
+          },
+        },
+      },
     };
       
-      const labels = ['DB0', 'DB2', 'DB3', 'DB4', 'DB5', 'DB6', 'DB7', 'DB8', 'DB9', 'DB10', 'DB11', 'DB12'];
-      
+    const labels = ['DB0', 'DB1', 'DB2', 'DB3', 'DB4', 'DB5', 'DB6', 'DB7', 'DB8', 'DB9', 'DB10', 'DB11', 'DB12', 'DB13', 'DB14', 'DB15'];
+
       const data = {
         labels,
         datasets: [
           {
             label: 'Keys',
-            data: [10, 20, 15, 25, 30, 18, 22, 17, 28, 14, 23, 19], // Replace with actual values for DB0
+            data: [
+              DbState.db0 ? DbState.db0.keys || 0 : 0,
+              DbState.db1 ? DbState.db1.keys || 0 : 0,
+              DbState.db2 ? DbState.db2.keys || 0 : 0,
+              DbState.db3 ? DbState.db3.keys || 0 : 0,
+              DbState.db4 ? DbState.db4.keys || 0 : 0,
+              DbState.db5 ? DbState.db5.keys || 0 : 0,
+              DbState.db6 ? DbState.db6.keys || 0 : 0,
+              DbState.db7 ? DbState.db7.keys || 0 : 0,
+              DbState.db8 ? DbState.db8.keys || 0 : 0,
+              DbState.db9 ? DbState.db9.keys || 0 : 0,
+              DbState.db10 ? DbState.db11.keys || 0 : 0,
+              DbState.db11 ? DbState.db11.keys || 0 : 0,
+              DbState.db12 ? DbState.db12.keys || 0 : 0,
+              DbState.db13 ? DbState.db13.keys || 0 : 0,
+              DbState.db14 ? DbState.db14.keys || 0 : 0,
+              DbState.db15 ? DbState.db15.keys || 0 : 0,
+              // Repeat similar structures for other datasets
+            ],
             borderColor: 'rgb(52, 52, 203)',
             backgroundColor: 'rgb(52, 52, 203)',
           },
           {
             label: 'Expires',
-            data: [5, 15, 10, 20, 25, 13, 18, 14, 21, 12, 19, 16], // Replace with actual values for DB2
+            data: [
+              DbState.db0 ? DbState.db0.expires || 0 : 0,
+              DbState.db1 ? DbState.db1.expires || 0 : 0,
+              DbState.db2 ? DbState.db2.expires || 0 : 0,
+              DbState.db3 ? DbState.db3.expires || 0 : 0,
+              DbState.db4 ? DbState.db4.expires || 0 : 0,
+              DbState.db5 ? DbState.db5.expires || 0 : 0,
+              DbState.db6 ? DbState.db6.expires || 0 : 0,
+              DbState.db7 ? DbState.db7.expires || 0 : 0,
+              DbState.db8 ? DbState.db8.expires || 0 : 0,
+              DbState.db9 ? DbState.db9.expires || 0 : 0,
+              DbState.db10 ? DbState.db11.expires || 0 : 0,
+              DbState.db11 ? DbState.db11.expires || 0 : 0,
+              DbState.db12 ? DbState.db12.expires || 0 : 0,
+              DbState.db13 ? DbState.db13.expires || 0 : 0,
+              DbState.db14 ? DbState.db14.expires || 0 : 0,
+              DbState.db15 ? DbState.db15.expires || 0 : 0,
+            ], // Replace with actual values for DB2
             borderColor: 'rgb(157,55,55)',
             backgroundColor: 'rgb(157,55,55)',
           },
           {
             label: 'Avg TTL',
-            data: [8, 18, 12, 22, 27, 15, 20, 16, 25, 11, 20, 17], // Replace with actual values for DB3
+            data: [
+              DbState.db0 ? DbState.db0.avg_ttl || 0 : 0,
+              DbState.db1 ? DbState.db1.avg_ttl || 0 : 0,
+              DbState.db2 ? DbState.db2.avg_ttl || 0 : 0,
+              DbState.db3 ? DbState.db3.avg_ttl || 0 : 0,
+              DbState.db4 ? DbState.db4.avg_ttl || 0 : 0,
+              DbState.db5 ? DbState.db5.avg_ttl || 0 : 0,
+              DbState.db6 ? DbState.db6.avg_ttl || 0 : 0,
+              DbState.db7 ? DbState.db7.avg_ttl || 0 : 0,
+              DbState.db8 ? DbState.db8.avg_ttl || 0 : 0,
+              DbState.db9 ? DbState.db9.avg_ttl || 0 : 0,
+              DbState.db10 ? DbState.db11.avg_ttl || 0 : 0,
+              DbState.db11 ? DbState.db11.avg_ttl || 0 : 0,
+              DbState.db12 ? DbState.db12.avg_ttl || 0 : 0,
+              DbState.db13 ? DbState.db13.avg_ttl || 0 : 0,
+              DbState.db14 ? DbState.db14.avg_ttl || 0 : 0,
+              DbState.db15 ? DbState.db15.avg_ttl || 0 : 0,
+            ], // Replace with actual values for DB3
             backgroundColor: 'rgb(7,216,7)',
             borderColor: 'rgb(7,216,7)',
           },
@@ -95,6 +196,8 @@ const RedisDash = () => {
       const handleClickEditXMark = () => {
         setEditAlert(false)
       }
+      
+      
   return (
     <>
     <div className='RedisDash'>
@@ -107,6 +210,8 @@ const RedisDash = () => {
           </div>
         </div>
         <div className='RedisDashRow1'>
+        {Data && ( // Check if Data is not null before accessing properties
+              <>
             <div className='Row1Card1'>
                 <div className='Card1Header'>
                     <h3><FontAwesomeIcon icon={faServer} className='faServer'/>Server</h3>
@@ -114,15 +219,15 @@ const RedisDash = () => {
                 <div className='Card1Contenet'>
                     <div className='Card1ContFt'>
                         <span className='A1'>Redis Version:</span>
-                        <span className='A1C'>7.2.2</span>
+                        <span className='A1C'>{Data.redis_version}</span>
                     </div>                    
                     <div className='Card1ContSd'>
                         <span className='A1'>OS:</span>
-                        <span className='A1C'>Windows</span>
+                        <span className='A1C'>{Data.os}</span>
                     </div>                    
                     <div className='Card1ContTh'>
                         <span className='A1'>Process ID:</span>
-                        <span className='A1C'>4128</span>
+                        <span className='A1C'>{Data.process_id}</span>
                     </div>
                 </div>
             </div>
@@ -133,15 +238,15 @@ const RedisDash = () => {
                 <div className='Card2Contenet'>
                     <div className='Card1ContFt'>
                         <span className='A1'>Used Memory:</span>
-                        <span className='A1C'>485.59KB</span>
+                        <span className='A1C'>{Data.used_memory}</span>
                     </div>                    
                     <div className='Card1ContSd'>
                         <span className='A1'>Used Memory Peak:</span>
-                        <span className='A1C'>696.19KB</span>
+                        <span className='A1C'>{Data.used_memory_peak}</span>
                     </div>                    
                     <div className='Card1ContTh'>
                         <span className='A1'>Used Memory Lua:</span>
-                        <span className='A1C'>31KB</span>
+                        <span className='A1C'>{Data.used_memory_lua}</span>
                     </div>
                 </div>
             </div>
@@ -152,18 +257,20 @@ const RedisDash = () => {
                 <div className='Card3Contenet'>
                     <div className='Card1ContFt'>
                         <span className='A1'>Connected Clients:</span>
-                        <span className='A1C'>2</span>
+                        <span className='A1C'>{Data.connected_clients}</span>
                     </div>                    
                     <div className='Card1ContSd'>
                         <span className='A1'>Total Connections:</span>
-                        <span className='A1C'>2</span>
+                        <span className='A1C'>{Data.total_connections_received}</span>
                     </div>                    
                     <div className='Card1ContTh'>
                         <span className='A1'>Total Commands:</span>
-                        <span className='A1C'>5</span>
+                        <span className='A1C'>{Data.total_commands_processed}</span>
                     </div>
                 </div>
             </div>
+            </>
+        )}
         </div>
         <div style={{ height:'400px' ,display:'flex',justifyContent:'center',alignItems:'center'}}>
             {/* <Bar data={data} options={options} /> */}

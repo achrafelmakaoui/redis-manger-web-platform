@@ -35,7 +35,7 @@ const Dash = () => {
     try {
       setSelectedDb(e.target.value)
       const response = await axios.post(`http://192.168.1.105:5000/change_db`, {
-        db: 0 || selectedDb,
+        db: 0 || parseInt(e.target.value),
       });
       setKeys(response.data.response);
       console.log(response.data);
@@ -168,7 +168,7 @@ const Dash = () => {
                       <div className='ConnDetItem1'>
                           <select value={selectedDb} onChange={(e) => handelChooseDb(e)}>
                               <option value=''>--Choose DB--</option>
-                              <option value='0' selected>DB0</option>
+                              <option value='0'>DB0</option>
                               <option value='1'>DB1</option>
                               <option value='2'>DB2</option>
                               <option value='3'>DB3</option>
