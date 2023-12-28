@@ -113,17 +113,11 @@ def key_value(key):
         return Keys.get_key_value(redis_conn, key,app)
 
 # Keys
-@app.route('/key_value/<key>', methods=['GET'])
-def key_value(key):
-    if request.method == "GET":
 
-        return Keys.get_key_value(redis_conn, key)
-    
 @app.route('/keys', methods=['POST', 'PUT', 'DELETE', 'GET'])
 def keys():
     global redis_conn
     data = request.get_json()
-    print(data)
     if redis_conn:
         if redis_conn.connection:
             if request.method == ("POST" or "PUT"):
