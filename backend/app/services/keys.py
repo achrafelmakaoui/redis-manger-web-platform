@@ -6,7 +6,7 @@ class Keys:
 
     
     @staticmethod
-    def set_key_value(redis_conn, key, value):
+    def set_key_value(redis_conn, key, value, app=None):
 
         try:
                  
@@ -15,6 +15,10 @@ class Keys:
             if responce :
 
                 responce = jsonify({'message': "success"})
+                connection_info = redis_conn.connection.get_connection_kwargs()
+
+                if app != None:
+                    app.logger.info(f'set key value - {connection_info["client_name"]} - key: {key} | value: {value} ')
             else:
                 responce = jsonify({'error': "failed"})
 
@@ -27,7 +31,7 @@ class Keys:
 
 
     @staticmethod
-    def delete_key_value(redis_conn, key):
+    def delete_key_value(redis_conn, key, app=None):
 
         try:
             responce = (redis_conn.connection.delete(key))
@@ -35,6 +39,10 @@ class Keys:
             if responce :
 
                 responce = jsonify({'message': "success"})
+                connection_info = redis_conn.connection.get_connection_kwargs()
+
+                if app != None:
+                    app.logger.info(f'delete key - {connection_info["client_name"]} - key: {key} ')
             else:
                 responce = jsonify({'error': "failed"})
 
@@ -45,18 +53,21 @@ class Keys:
 
     
     @staticmethod
-    def get_key_value(redis_conn, key):
+    def get_key_value(redis_conn, key, app=None):
 
         try:
             responce = (redis_conn.connection.get(key))
-
+            print(responce)
             if responce :
 
                 if isinstance(responce, bytes):
                     responce = responce.decode('utf-8')
 
                 responce = jsonify({"key":key, "value":str(responce)})
-            
+                connection_info = redis_conn.connection.get_connection_kwargs()
+                if app != None:
+                    app.logger.info(f'get value - {connection_info["client_name"]} - key: {key}  ')
+
             else:
                 responce = jsonify({'error': "failed"})
 
