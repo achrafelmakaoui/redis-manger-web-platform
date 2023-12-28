@@ -38,8 +38,8 @@ def connect():
     if not redis_conn:
         redis_conn = connection.Conn()
     responce = redis_conn.connect(creds, redis_connections, app)
-    info = redis_conn.connection.info('clients')
- 
+    if not responce:
+        return 
     if isinstance(responce, dict) and responce["conn_info"]:
         redis_connections = redis_conn.get_connections()
         responce = jsonify(responce)
