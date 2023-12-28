@@ -15,7 +15,7 @@ import logging
 app = Flask(__name__)
 app.logger.setLevel(logging.INFO)  
 handler = logging.FileHandler('app.log') 
-formatter = logging.Formatter('%(asctime)s - %(message)s')
+formatter = logging.Formatter('%(asctime)s - %(message)s', datefmt='%H:%M:%S')
 handler.setFormatter(formatter)
 app.logger.addHandler(handler)
 
