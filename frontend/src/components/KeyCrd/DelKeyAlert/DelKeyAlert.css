@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: "GilroyMedium";
+    src: url("../../fonts/Gilroy-Medium.ttf");
+}
+@font-face {
+    font-family: "MyriadProLight";
+    src: url("../../fonts/MyriadPro-Light.woff") format("woff");
+}
+@font-face {
+    font-family: "futura";
+    src: url("../../fonts/futur.ttf");
+}
+@font-face {
+    font-family: "futuramd";
+    src: url("../../fonts/futura\ medium\ bt.ttf");
+}
+@font-face {
+    font-family: "futuracmd";
+    src: url("../../fonts/futura\ medium\ condensed\ bt.ttf");
+}
+@font-face {
+    font-family: "futuraextra";
+    src: url("../../fonts/Futura\ Extra\ Black\ font.ttf");
+}
+@font-face {
+    font-family: "TripSansBold";
+    src: url("../../fonts/TripSans-Bold.ttf");
+}
+@font-face {
+    font-family: "TripSansMedium";
+    src: url("../../fonts/TripSans-Medium.ttf");
+}
+@font-face {
+    font-family: "TripSansRegular";
+    src: url("../../fonts/TripSans-Regular.ttf");
+}
+@font-face {
+    font-family: "TripSansUltra";
+    src: url("../../fonts/TripSans-Ultra.ttf");
+}
+@font-face {
+    font-family: "TripSansMonoRegular";
+    src: url("../../fonts/TripSansMono-Regular.ttf");
+}
+@font-face {
+    font-family: "FontsFreeNetSFMonoMedium";
+    src: url("../../fonts/FontsFree-Net-SFMono-Medium.ttf");
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: "GilroyMedium";
+    src: url("../../fonts/Gilroy-Medium.ttf");
+}
+@font-face {
+    font-family: "MyriadProLight";
+    src: url("../../fonts/MyriadPro-Light.woff") format("woff");
+}
+@font-face {
+    font-family: "futura";
+    src: url("../../fonts/futur.ttf");
+}
+.DelKeymotionDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--motion_div_bg);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+}
+.delkeycontainer{
+    width: 500px;
+    height: 140px;
+    background: var(--background_color);
+    border-radius: 3px;
+    box-shadow: 0px 2px 12px 0px var(--box_shadow_alert_cards);
+    transform: translate(-50%, -50%);
+}
+.delkeycoLgFrst{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+}
+.delkeycoLgFrst .delkeyconnTit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.delkeycoLgFrst .delkeyconnTit .faQuestion{
+    padding: 7px;
+    background-color: rgba(255, 136, 0, 0.83);
+    border-radius: 50%;
+    width: 0.95rem;
+    height: 0.95rem;
+    color: white;
+}
+.delkeycoLgFrst .delkeyconnTit h4{
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 700;
+    color: var(--conn_name_color);
+}
+.delkeycoLgFrst .delKeyxMarkIcon{
+    color: var(--conn_name_color);
+    padding: 0;
+    margin: 0;
+}
+.delkeycoLgFrst .delKeyxMarkIcon .delKeyxMark{
+    cursor: pointer;
+    width: 1.10rem;
+    height:1.10rem;
+}
+.delkeycoLgFrst .delKeyxMarkIcon .delKeyxMark:hover{
+    color: #406de0;
+}
+
+

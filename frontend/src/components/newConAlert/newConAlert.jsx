@@ -15,7 +15,7 @@ const NewConAlert = ({ handleClose }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          const response = await axios.post(`http://localhost:5000/connect`, {
+          const response = await axios.post(`http://192.168.1.105:5000/connect`, {
             host: host, 
             port:parseInt(port), 
             client_name: connName
