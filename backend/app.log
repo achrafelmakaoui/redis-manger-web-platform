@@ -1,0 +1,102 @@
+2023-12-28 16:30:14,505 - connect - db[0] - None 
+2023-12-28 16:30:20,726 - switch db - None - to db[2]
+2023-12-28 16:30:23,481 - switch db - None - to db[0]
+2023-12-28 16:30:23,482 - switch db - None - to db[0]
+2023-12-28 16:30:25,684 - switch db - None - to db[1]
+2023-12-28 16:30:28,339 - switch db - None - to db[0]
+2023-12-28 16:30:28,341 - switch db - None - to db[0]
+2023-12-28 16:30:45,276 - switch db - None - to db[0]
+2023-12-28 16:30:45,277 - switch db - None - to db[0]
+2023-12-28 16:31:01,655 - connect - db[0] -  
+2023-12-28 16:31:46,844 - switch db -  - to db[1]
+2023-12-28 16:32:08,867 - switch db -  - to db[0]
+2023-12-28 16:32:08,868 - switch db -  - to db[0]
+2023-12-28 16:32:17,558 - switch db -  - to db[1]
+2023-12-28 16:32:23,431 - switch db -  - to db[2]
+2023-12-28 16:32:50,625 - switch db -  - to db[0]
+2023-12-28 16:32:50,626 - switch db -  - to db[0]
+2023-12-28 16:39:28,594 - connect - db[0] -  
+2023-12-28 16:39:30,340 - connect - db[0] - fbs_conn 
+2023-12-28 16:39:44,991 - switch db - fbs_conn - to db[1]
+2023-12-28 16:42:28,837 - connect - db[0] -  
+2023-12-28 16:42:34,288 - switch db -  - to db[1]
+2023-12-28 16:43:40,251 - switch db -  - to db[0]
+2023-12-28 16:43:40,252 - switch db -  - to db[0]
+2023-12-28 16:46:42,950 - connect - db[0] -  
+2023-12-28 16:46:46,018 - switch db -  - to db[0]
+2023-12-28 16:46:46,019 - switch db -  - to db[0]
+2023-12-28 16:46:49,440 - switch db -  - to db[2]
+2023-12-28 16:47:03,798 - switch db -  - to db[1]
+2023-12-28 16:48:29,912 - connect - db[0] -  
+2023-12-28 16:48:30,679 - switch db -  - to db[0]
+2023-12-28 16:48:30,680 - switch db -  - to db[0]
+2023-12-28 16:48:34,185 - switch db -  - to db[1]
+2023-12-28 16:48:36,683 - switch db -  - to db[2]
+2023-12-28 16:48:40,913 - switch db -  - to db[0]
+2023-12-28 16:48:40,914 - switch db -  - to db[0]
+2023-12-28 16:48:42,549 - get value -  - key: testt  
+2023-12-28 16:48:44,088 - get value -  - key: Test  
+2023-12-28 16:49:18,213 - connect - db[0] - fbs_conn 
+2023-12-28 17:12:30,319 - connect - db[0] -  
+2023-12-28 17:12:52,568 - connect - db[0] - fbs_conn 
+2023-12-28 17:18:13,356 - connect - db[0] -  
+2023-12-28 17:22:13,442 - connect - db[0] - fbs_conn 
+2023-12-28 17:38:42,567 - switch db - fbs_conn - to db[0]
+2023-12-28 17:38:42,568 - switch db - fbs_conn - to db[0]
+2023-12-28 18:22:40,016 - connect - db[0] -  
+2023-12-28 18:22:51,547 - commande-  - PING
+2023-12-28 18:22:57,099 - commande-  - PING
+2023-12-28 18:24:45,024 - connect - db[0] - fbs_conn 
+2023-12-28 18:28:20,612 - connect - db[0] -  
+2023-12-28 18:53:17,186 - switch db -  - to db[1]
+2023-12-28 18:53:36,440 - set key value -  - key: LastName | value: ELMAKAOUI 
+2023-12-28 18:53:53,554 - connect - db[0] - fbs_conn 
+2023-12-28 18:58:34,089 - switch db - fbs_conn - to db[4]
+2023-12-28 18:58:36,517 - get value - fbs_conn - key: FirstName  
+2023-12-28 20:24:50,307 - connect - db[0] - test 
+2023-12-28 20:24:57,183 - connect - db[0] -  
+2023-12-28 20:26:55,529 - connect - db[0] - fbs_conn 
+2023-12-28 20:30:16,709 - set key value - fbs_conn - key: AppName | value: RedisMagnet 
+2023-12-28 20:30:23,710 - switch db - fbs_conn - to db[5]
+2023-12-28 20:31:05,474 - set key value - fbs_conn - key: StudentKey | value: 123456 
+2023-12-28 20:31:20,929 - switch db - fbs_conn - to db[5]
+2023-12-28 20:32:24,943 - set key value - fbs_conn - key: Key | value: keyValue 
+2023-12-28 20:37:20,651 - set key value - fbs_conn - key: Db8key | value: Value key Test Another 
+2023-12-28 20:37:40,552 - set key value - fbs_conn - key: Test8 | value: Value8 
+2023-12-28 20:38:13,906 - switch db - fbs_conn - to db[5]
+2023-12-28 20:38:13,907 - switch db - fbs_conn - to db[5]
+2023-12-28 20:38:45,833 - commande- fbs_conn - Select 8
+2023-12-28 20:39:25,607 - commande- fbs_conn - Select 8
+2023-12-28 20:39:46,148 - commande- fbs_conn - expire key 3000
+2023-12-28 20:40:10,266 - commande- fbs_conn - expire Key 3000
+2023-12-28 20:40:23,500 - connect - db[0] -  
+2023-12-28 20:40:46,402 - commande-  - del key
+2023-12-28 20:40:56,717 - commande-  - del Key
+2023-12-28 20:41:09,462 - connect - db[0] - fbs_conn 
+2023-12-28 20:41:24,816 - switch db - fbs_conn - to db[5]
+2023-12-28 20:41:24,817 - switch db - fbs_conn - to db[5]
+2023-12-28 20:41:36,752 - commande- fbs_conn - select 5
+2023-12-28 20:41:45,006 - commande- fbs_conn - del Key
+2023-12-28 20:41:49,350 - commande- fbs_conn - save
+2023-12-28 20:42:11,038 - connect - db[0] -  
+2023-12-28 20:43:01,356 - switch db -  - to db[5]
+2023-12-28 20:43:17,207 - commande-  - select 5
+2023-12-28 20:43:41,070 - commande-  - expire AppName 5
+2023-12-28 20:43:44,120 - commande-  - save
+2023-12-28 20:43:50,855 - connect - db[0] - fbs_conn 
+2023-12-28 20:48:55,312 - connect - db[0] -  
+2023-12-28 20:49:16,712 - connect - db[0] - Student 
+2023-12-28 20:50:12,500 - connect - db[0] - fbs_conn 
+2023-12-28 21:11:11,097 - switch db - fbs_conn - to db[0]
+2023-12-28 21:11:11,098 - switch db - fbs_conn - to db[0]
+2023-12-28 21:11:13,998 - switch db - fbs_conn - to db[1]
+2023-12-28 21:11:13,999 - switch db - fbs_conn - to db[1]
+2023-12-28 21:11:14,000 - switch db - fbs_conn - to db[1]
+2023-12-28 21:11:31,919 - commande- fbs_conn - select 1
+2023-12-28 21:11:37,114 - commande- fbs_conn - TTL Age
+2023-12-28 21:13:56,160 - connect - db[0] -  
+2023-12-28 21:17:52,539 - connect - db[0] - fbs_conn 
+2023-12-28 21:30:13,378 - connect - db[0] - Student 
+2023-12-28 21:30:14,272 - connect - db[0] - test 
+2023-12-28 21:30:46,836 - set key value - test - key: TestLog | value: LogValue 
+2023-12-28 21:44:16,049 - connect - db[0] - fbs_conn 

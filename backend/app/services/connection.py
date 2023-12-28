@@ -62,9 +62,7 @@ class Conn:
             connection_info["db"] = db
             print(connection_info)
             self.connection = redis.Redis(host=connection_info['host'], port=connection_info['port'], username=connection_info['username'], password=connection_info['password'], client_name=connection_info['client_name'], db=connection_info['db'])
-            # time.sleep(1)
             temp_res = self.connection.keys()
-            print('keys: ', temp_res)
             responce = []
             for key in temp_res:
                 responce.append(str(key))

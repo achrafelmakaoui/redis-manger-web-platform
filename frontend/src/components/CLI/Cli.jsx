@@ -9,7 +9,7 @@ import { clearCli } from "../redux/cliRedux";
 
 const Cli = () => {
     const dispatch =useDispatch();
-    const [setCommandCli]=useState('');
+    const [CommandCli,setCommandCli]=useState('');
     const [Command,setCommand]=useState([]);
     const cmd = useSelector((state) => state.cli.cmdInput);
     const value='>';
