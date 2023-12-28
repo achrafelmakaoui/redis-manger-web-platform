@@ -1,6 +1,6 @@
 import json
 import os
-from flask import  jsonify, request, session
+from flask import  jsonify
 import redis
 class Conn:
 
@@ -44,7 +44,7 @@ class Conn:
                 self.update_connections(redis_connections=redis_connections)
                 changed = True
             if app != None:
-                app.logger.info(f'connect - db[{db or 0}] - {connection_info["client_name"]} ')
+                app.logger.info(f'{connection_info["client_name"]}: connect')
                 
             return jsonify({"message": "Connected to Redis server.", "conn_info":changed})
         
@@ -67,7 +67,7 @@ class Conn:
             for key in temp_res:
                 responce.append(str(key))
                 if app != None: 
-                    app.logger.info(f'switch db - {connection_info["client_name"]} - to db[{db or 0}]')
+                    app.logger.info(f'{connection_info["client_name"]}: select [{db or 0}]')
             return ({"response": responce}) 
         
         except Exception as e:
