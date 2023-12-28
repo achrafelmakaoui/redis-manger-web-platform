@@ -1,0 +1,139 @@
+.KeyCrd{
+    width: 100%;
+    padding: 0px 20px 0px 20px;
+}
+.KeyCrd .keyTitle{
+    
+}
+.KeyCrd .keyTitle h2{
+    color: var(--dark_color);
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: #2d2e32;
+    font-size: 1.35em;
+    color: #406de0;
+    font-weight: bold;
+}
+.KeyCrd .keyCrudOper{
+    display: flex;
+    flex: 3;
+    padding: 20px 0px 18px 0px;
+}
+.KeyCrd .keyUpNameOp{
+    width: 50%;
+}
+.KeyCrd .keyUpNameOp button{
+    padding: 6px 15px;
+    width: 15%;
+    border: 0;
+    color: rgba(65, 65, 65, 0.891);
+    outline: none;
+    border: 1px solid #406de0aa;
+    border-top-left-radius:3px;
+    border-bottom-left-radius:3px;
+    background-color: #406de0aa;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+}
+.KeyCrd .keyUpNameOp input{
+    padding: 6px 6px;
+    width: 80%;
+    border: 0;
+    outline: none;
+    border-top-right-radius:3px;
+    border-bottom-right-radius:3px;
+    border: 1px solid #406de0aa;
+    color: rgba(128, 128, 128, 0.641);
+    font-family: 'Poppins',sans-serif;
+    font-weight: 400;
+    background-color: transparent;
+}
+.KeyCrd .keyUpNameOp .ExecUpdKeyName{
+    color: #406de0;
+    padding-right: 5px;
+    position: absolute;
+    translate: -120% 55%;
+    cursor: pointer;
+}
+.KeyCrd .keyExpOp{
+    width: 48%;
+}
+.KeyCrd .keyExpOp button{
+    padding: 6px 15px;
+    width: 15%;
+    border: 0;
+    color: rgba(65, 65, 65, 0.891);
+    outline: none;
+    border: 1px solid #406de0aa;
+    border-top-left-radius:3px;
+    border-bottom-left-radius:3px;
+    background-color: #406de0aa;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+}
+.KeyCrd .keyExpOp input{
+    padding: 6px 6px;
+    width: 80%;
+    border: 0;
+    outline: none;
+    border-top-right-radius:3px;
+    border-bottom-right-radius:3px;
+    border: 1px solid #406de0aa;
+    color: rgba(128, 128, 128, 0.641);
+    font-family: 'Poppins',sans-serif;
+    font-weight: 400;
+    background-color: transparent;
+}
+.KeyCrd .keyExpOp .ExecUpdKeyTTL{
+    color: #406de0;
+    padding-right: 5px;
+    position: absolute;
+    translate: -120% 55%;
+    cursor: pointer;
+}
+.KeyCrd .keyDelOp{
+    width: 2%;
+}
+.KeyCrd .keyDelOp .faKeyTrashCan{
+    padding: 8px 10px;
+    background-color: #e845459f;
+    border:1px solid #ff5656;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #ffffffdc;
+}
+.KeyCrd .keyDelOp .faKeyTrashCan:hover{
+    background-color: #ea3838d8;
+    color: rgba(255, 255, 255, 0.951);
+}
+.KeyCrd .keyValue{
+    width: 100%;
+    padding-bottom: 15px;
+}
+.KeyCrd .keyValue textarea{
+    padding: 8px 0px 8px 8px;
+    width: 100%;
+    border: 0;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid rgba(128, 128, 128, 0.641);
+    color: var(--dark_color);
+    font-family: 'Poppins',sans-serif;
+    font-weight: 400;
+    background-color: transparent;
+}
+
+.KeyCrd .keyOkButton .SaveBtn{
+    background-color: #406de0;
+    border-radius: 3px;
+    border: 1px solid #406de0;
+    padding: 6px 12px;
+    color: white;
+    font-size: 13px;
+    font-weight:500;
+    font-family: "GilroyMedium";
+    cursor: pointer;
+}
+.KeyCrd .keyOkButton .SaveBtn:hover{
+    background-color: #2259e3;
+}

@@ -11,6 +11,7 @@ function App() {
               <Route path="/" element={<Intro/>}/>
               <Route path="/Dashboard" element={<Dash/>}/>
               <Route path="/Dashboard/:connName" element={<Dash/>}/>
+              <Route path="/Dashboard/:connName/:keyName" element={<Dash/>}/>
           </Routes>
       </ThemeProvider>
     </div>

@@ -14,6 +14,7 @@ import Cli from '../CLI/Cli'
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import Keycrd from '../KeyCrd/KeyCrd'
 
 const Dash = () => {
   const [Alert,setAlert]=useState(false);
@@ -23,45 +24,18 @@ const Dash = () => {
   const [FstDesignPage,setFstDesignPage]=useState(true);
   const [RedisPage,setRedisPage]=useState(false);
   const [Clii, setCli] = useState(false);
+  const [keyPage, setkeyPage] = useState(false);
   const [connections, setconnections] = useState([]);
   const [connDetStates, setConnDetStates] = useState(Array(connections.length).fill(false));
-  // const [connDetStates, setConnDetStates] = useState(true);
   const [selectedDb, setSelectedDb] = useState();
   const [keys, setKeys] = useState([]);
   const location = useLocation();
 
-  useEffect(() => {
-    const getConnections = async () => {  
-      let url = "http://localhost:5000/connections";
-      try {
-          const res = await axios.get(url);
-          setconnections(res.data);
-      } catch (err) {
-          console.log(err);
-      }
-    };
-    getConnections();
-  },[connections]);
-
-
-  const handelConnect = async () => {
-    try {
-      const response = await axios.post(`http://localhost:5000/connect`, {
-        host:'127.0.0.1', 
-        port:6379, 
-        client_name: location.pathname.split("/")[2]
-      });
-      console.log(response.data);
-      handelChooseDb();
-    } catch (error) {
-      console.error(error);
-    }
-  };
   const handelChooseDb = async (e) => {
     try {
       setSelectedDb(e.target.value)
-      const response = await axios.post(`http://localhost:5000/change_db`, {
-        db: parseInt(e.target.value),
+      const response = await axios.post(`http://192.168.1.105:5000/change_db`, {
+        db: 0 || selectedDb,
       });
       setKeys(response.data.response);
       console.log(response.data);
@@ -70,29 +44,47 @@ const Dash = () => {
       console.error(error);
     }
   };
+
+
+
+  useEffect(() => {
+    const getConnections = async () => {  
+      let url = "http://192.168.1.105:5000/connections";
+      try {
+          const res = await axios.get(url);
+          setconnections(res.data);
+      } catch (err) {
+          console.log(err);
+      }
+    };
+    getConnections();
+  },[]);
+
+
+  const handelConnect = async () => {
+    const currentClientName = location.pathname.split("/")[2];
+    setTimeout(async () => {
+      try {
+        const response = await axios.post(`http://192.168.1.105:5000/connect`, {
+          host:'127.0.0.1', 
+          port:6379, 
+          client_name: currentClientName
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }, 1500);
+  };
+
+  
   
   const handelClickCli = ()=>{
     setCli(true);
     setFstDesignPage(false);
     setRedisPage(false);
   }
-  // open conn
 
-  // const handelClickConn = () => {
-  //   if (!connDetStates) {
-  //     setFstDesignPage(false);
-  //     setRedisPage(true);
-  //     setCli(false);
-  //     newKeyHandelClick(true)
-
-  //   } else {
-  //     newKeyHandelClick(true)
-  //     setFstDesignPage(false);
-  //     setRedisPage(false);
-  //     setCli(false);
-  //   }
-  // };
-  
   // new key
   const  newKeyHandelClick = () => {
       setNewKeyAlert(true)
@@ -126,13 +118,23 @@ const Dash = () => {
     const newConnDetStates = [...connDetStates];
     newConnDetStates[index] = !newConnDetStates[index];
     setConnDetStates(newConnDetStates);
+    if(newConnDetStates){
+      setRedisPage(true);
+      setFstDesignPage(false);
+      setkeyPage(false);
+    }
   };
-
+  const handelShowKey = () =>  {
+      setRedisPage(false);
+      setFstDesignPage(false);
+      setkeyPage(true);
+  }
   return (
     <div className='ConPg'>
       <div className='fullCon'>
         <div className="connection">
           <div className='newCon'>
+             
             <button onClick={handelClick}><FontAwesomeIcon icon={faCirclePlus} className='faCirclePlus'/> New connection</button>
           </div>
           <div className='setting'>
@@ -166,7 +168,7 @@ const Dash = () => {
                       <div className='ConnDetItem1'>
                           <select value={selectedDb} onChange={(e) => handelChooseDb(e)}>
                               <option value=''>--Choose DB--</option>
-                              <option value='0'>DB0</option>
+                              <option value='0' selected>DB0</option>
                               <option value='1'>DB1</option>
                               <option value='2'>DB2</option>
                               <option value='3'>DB3</option>
@@ -193,7 +195,7 @@ const Dash = () => {
                   </div>
                   <div className='ConnDetRow3'>
                     {keys.slice(-5).map((key, index) => (
-                      <h4 key={index}>{key.replace(/^b'|'$/g, '')}</h4>
+                      <Link to={`/Dashboard/${connections.client_name}/${key.replace(/^b'|'$/g, '')}`}><h4 key={index} onClick={handelShowKey}>{key.replace(/^b'|'$/g, '')}</h4></Link>
                     ))}
 
                   </div>
@@ -207,6 +209,7 @@ const Dash = () => {
         ))}
         </div>
       </div>
+      {keyPage && <Keycrd/>}
       {Clii && <Cli text='Redis Magnet'/>}
       {NewKeyAlert && <NewKeyAlertt handleClose={handleClickXMarkNewKey}/>}
       {RedisPage && <RedisDash/>}

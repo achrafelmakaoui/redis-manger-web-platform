@@ -19,7 +19,7 @@ const AlertEditConn = ({ handleClose }) => {
 
     useEffect(() => {
       const getConnections = async () => {  
-        let url = "http://localhost:5000/connections";
+        let url = "http://192.168.1.105:5000/connections";
         try {
             const res = await axios.get(url);
             setconnection(res.data);
@@ -47,7 +47,7 @@ const AlertEditConn = ({ handleClose }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          const response = await axios.put(`http://192.168.1.102:5000/connections`, {
+          const response = await axios.put(`http://192.168.1.105:5000/connections`, {
             client_name:client_name,
             new_client: {
               host: host,

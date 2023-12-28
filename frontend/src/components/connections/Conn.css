@@ -230,6 +230,7 @@
 }
 .ConnDet .ConnDetRow3{
     height: 450px;
+    overflow-y: scroll;
 }
 .ConnDet .ConnDetRow3 h4{
     font-family: "GilroyMedium";

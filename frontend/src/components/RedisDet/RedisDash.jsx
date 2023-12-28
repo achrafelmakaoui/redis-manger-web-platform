@@ -2,46 +2,57 @@ import React, { useState } from 'react'
 import './RedisDash.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faServer,faDatabase,faChartColumn} from '@fortawesome/free-solid-svg-icons'
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-  } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+// import {
+//     Chart as ChartJS,
+//     CategoryScale,
+//     LinearScale,
+//     BarElement,
+//     Title,
+//     Tooltip,
+//     Legend,
+//   } from 'chart.js';
+// import { Bar } from 'react-chartjs-2';
 import { faTrashCan,faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
 import AlertEditConn from '../AlertEditConn/AlertEditConn';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+
 const RedisDash = () => {
   const [EditAlert,setEditAlert]=useState(false);
     const location = useLocation();
     ChartJS.register(
-        CategoryScale,
-        LinearScale,
-        BarElement,
-        Title,
-        Tooltip,
-        Legend
-      );
-      
-      const options = {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-
-          title: {
-            display: true,
-            color:'gray',
-            text: 'Key Statistics Bar Chart',
-          },
+      CategoryScale,
+      LinearScale,
+      PointElement,
+      LineElement,
+      Title,
+      Tooltip,
+      Legend
+    );
+    
+    const options = {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
         },
-      };
+        title: {
+          display: true,
+          text: 'Chart.js Line Chart',
+        },
+      },
+    };
       
       const labels = ['DB0', 'DB2', 'DB3', 'DB4', 'DB5', 'DB6', 'DB7', 'DB8', 'DB9', 'DB10', 'DB11', 'DB12'];
       
@@ -51,17 +62,20 @@ const RedisDash = () => {
           {
             label: 'Keys',
             data: [10, 20, 15, 25, 30, 18, 22, 17, 28, 14, 23, 19], // Replace with actual values for DB0
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            borderColor: 'rgb(52, 52, 203)',
+            backgroundColor: 'rgb(52, 52, 203)',
           },
           {
             label: 'Expires',
             data: [5, 15, 10, 20, 25, 13, 18, 14, 21, 12, 19, 16], // Replace with actual values for DB2
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
+            borderColor: 'rgb(157,55,55)',
+            backgroundColor: 'rgb(157,55,55)',
           },
           {
             label: 'Avg TTL',
             data: [8, 18, 12, 22, 27, 15, 20, 16, 25, 11, 20, 17], // Replace with actual values for DB3
-            backgroundColor: 'rgba(53, 235, 77, 0.5)',
+            backgroundColor: 'rgb(7,216,7)',
+            borderColor: 'rgb(7,216,7)',
           },
         ],
       };
@@ -152,7 +166,8 @@ const RedisDash = () => {
             </div>
         </div>
         <div style={{ height:'400px' ,display:'flex',justifyContent:'center',alignItems:'center'}}>
-            <Bar data={data} options={options} />
+            {/* <Bar data={data} options={options} /> */}
+            <Line options={options} data={data} />
         </div> 
     </div>
     {EditAlert && <><AlertEditConn handleClose={handleClickEditXMark}/></>}
