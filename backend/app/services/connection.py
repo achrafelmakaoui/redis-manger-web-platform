@@ -1,11 +1,7 @@
 import json
 import os
-import time
-from flask import jsonify, request, session
+from flask import  jsonify, request, session
 import redis
-
-
-
 class Conn:
 
     def __init__ (self):
@@ -13,10 +9,14 @@ class Conn:
 
     
 
-    def connect(self, creds, redis_connections:list = None):
+    def connect(self, creds, redis_connections:list = None, app=None):
+
 
         client_name = creds.get("client_name")
 
+        if client_name == None:
+            pass
+        
         same_conn = self.compare_conn_name(client_name)
         if same_conn :
             return jsonify({"message": "Already connected to Redis server."})
@@ -30,7 +30,8 @@ class Conn:
         # try:
         self.disconnect()
         self.connection = redis.Redis(host=host, port=port, username=username, password=password, client_name=client_name, db=db)
-        print(self.connection.scan_iter())
+        
+
         if (self.connection.ping()):
 
             connection_info = self.connection.get_connection_kwargs()
@@ -42,14 +43,18 @@ class Conn:
                 redis_connections.append(connection_info)
                 self.update_connections(redis_connections=redis_connections)
                 changed = True
+            if app != None:
+                app.logger.info(f'connect - db[{db or 0}] - {connection_info["client_name"]} ')
+                
             return jsonify({"message": "Connected to Redis server.", "conn_info":changed})
+        
             
         # except Exception as e:
 
         #     return jsonify({"error": "connection"})
 
 
-    def use_other_db(self, db):
+    def use_other_db(self, db, app=None):
         
         try:
             connection_info = self.connection.get_connection_kwargs()
@@ -63,6 +68,8 @@ class Conn:
             responce = []
             for key in temp_res:
                 responce.append(str(key))
+                if app != None: 
+                    app.logger.info(f'switch db - {connection_info["client_name"]} - to db[{db or 0}]')
             return ({"response": responce}) 
         
         except Exception as e:
@@ -114,7 +121,6 @@ class Conn:
             conn_creds = self.connection.get_connection_kwargs()
             return conn_creds["client_name"] == conn_name
         return 0
-
 
 
 
@@ -183,9 +189,6 @@ class Conn:
         return jsonify({"error":"client not found!!!!"})
 
 
-
-
-    
 
     
     @staticmethod

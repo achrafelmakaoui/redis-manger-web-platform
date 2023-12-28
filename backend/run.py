@@ -1,14 +1,24 @@
 
+from collections import deque
 from flask import jsonify, request
-from app.services.connection import Conn
 from app.services import connection
 from app.services.command import Command
+from app.services.monitoring import Monitor
+
 from app.services.keys import Keys
 from flask import Flask, jsonify
 from flask_cors import CORS
+import logging
+
 
 
 app = Flask(__name__)
+app.logger.setLevel(logging.INFO)  
+handler = logging.FileHandler('app.log') 
+formatter = logging.Formatter('%(asctime)s - %(message)s')
+handler.setFormatter(formatter)
+app.logger.addHandler(handler)
+
 CORS(app)
 
 
@@ -27,9 +37,9 @@ def connect():
 
     if not redis_conn:
         redis_conn = connection.Conn()
-    responce = redis_conn.connect(creds, redis_connections)
-    
-    # try:
+    responce = redis_conn.connect(creds, redis_connections, app)
+    info = redis_conn.connection.info('clients')
+ 
     if isinstance(responce, dict) and responce["conn_info"]:
         redis_connections = redis_conn.get_connections()
         responce = jsonify(responce)
@@ -42,7 +52,7 @@ def  use_other_db():
     
     global redis_conn, redis_connections
     creds = request.get_json() 
-    return jsonify(redis_conn.use_other_db(creds['db']))
+    return jsonify(redis_conn.use_other_db(creds['db'], app))
     
     
 
@@ -88,13 +98,19 @@ def exec_command():
         if redis_conn.connection:
             data = request.get_json()
             command = data["command"]
-            responce = (Command.exec_command(redis_conn, command))
+            responce = (Command.exec_command(redis_conn, command,app))
             print(responce)
             return (responce)
     return jsonify({"error": "connection not established!"})
 
 
 
+
+@app.route('/key_value/<key>', methods=['GET'])
+def key_value(key):
+    if request.method == "GET":
+
+        return Keys.get_key_value(redis_conn, key,app)
 
 # Keys
 @app.route('/key_value/<key>', methods=['GET'])
@@ -114,21 +130,53 @@ def keys():
 
                 key, value = data["key"], data["value"]
 
-                return Keys.set_key_value(redis_conn, key, value)
+                return Keys.set_key_value(redis_conn, key, value, app)
 
             elif request.method == "DELETE":
 
                 key = data["key"]
 
-                return Keys.delete_key_value(redis_conn, key)
+                return Keys.delete_key_value(redis_conn, key,app)
 
-            elif request.method == "GET":
-
-                key = data["key"]
-
-                return Keys.get_key_value(redis_conn, key)
 
     return jsonify({"error": "connection not established!"})
+
+
+
+@app.route('/logs', methods=['GET'])
+def logs():
+    if request.method == "GET":
+        n=20
+        filename = "app.log"
+        with open(filename, 'r', encoding='utf-8') as file:
+
+            last_lines = deque(file, maxlen=n)
+            last_lines_stripped = [line.strip() for line in last_lines]
+    
+        return list(last_lines_stripped)
+    
+@app.route('/monitor', methods=['GET'])
+def monitor():
+    global redis_conn
+    if redis_conn:
+        if redis_conn.connection:
+            if request.method == "GET":
+                return Monitor.get_stats(redis_conn)
+
+    
+        return jsonify({"error": "connection not established!"})
+    
+
+@app.route('/dbs_stats', methods=['GET'])
+def dbs_stats():
+    global redis_conn
+    if redis_conn:
+        if redis_conn.connection:
+            if request.method == "GET":
+                return Monitor.get_dbs_stats(redis_conn)
+    
+        return jsonify({"error": "connection not established!"})
+    
 
 
 if __name__ == "__main__":

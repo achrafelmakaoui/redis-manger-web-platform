@@ -1,3 +1,6 @@
 {
-  "python.analysis.extraPaths": ["./backend/app/blueprints"]
+  "python.analysis.extraPaths": [
+    "./backend/app/blueprints"
+  ],
+  "python.analysis.autoImportCompletions": false
 }
