@@ -12916,3 +12916,7 @@
 03:38:29 - test - connect
 03:39:41 - Test - connect
 03:39:42 - estfbs_conn - connect
+03:46:07 - None - connect
+03:46:12 - None - select [0]
+03:46:12 - None - select [0]
+03:46:12 - None - select [0]
