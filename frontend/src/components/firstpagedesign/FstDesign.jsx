@@ -74,6 +74,7 @@ const FstDesign = ({handelClick}) => {
             <div className='toolUses'>
                 <div className='topIcon'>
                     <Lottie lottieRef={CoodingRef} animationData={Cooding} className='Cooding' />
+                    <h3>Dev Tech Stack</h3>
                 </div>
                 <div className='toolsDiv'>
                     <div className='frontTools'>

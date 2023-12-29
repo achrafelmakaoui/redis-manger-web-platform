@@ -51,6 +51,8 @@
 .fstDesign{
     width: 100%;
     padding: 50px 20px 0px 20px;
+    height: 90vh;
+
 }
 .fstDesign .stLayout{
     width: 100%;
@@ -77,8 +79,9 @@
 
 
 .fstDesign .stLayout .cardDes .cardDesDesc .cardDesDescTit h3{
+    
     font-family: 'Montserrat',sans-serif;
-    /* font-weight: 600; */
+
 }
 @keyframes wave {
     0% { transform: rotate(15deg); }
@@ -112,7 +115,10 @@
 .fstDesign .stLayout .cardDes .cardDesDesc .cardDesDescSecTit h2{
     font-family: 'Montserrat',sans-serif;
     font-weight: 900;
-    line-height: 1;
+
+    /* font-family: 'Poppins', sans-serif;
+    font-weight: 800; */
+    line-height: 1rem;
     display: flex;
     align-items: first baseline;
     
@@ -174,7 +180,7 @@
     box-shadow: 0px 2px 8px 0px var(--boxSadow);
 }
 .fstDesign .fstDesignChild .RedisCliDes .cliTop{
-    padding: 15px 30px;
+    padding: 18.75px 30px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.493);
 }
 .fstDesign .fstDesignChild .RedisCliDes .cliTop .circleIcon{
@@ -244,10 +250,19 @@
 .fstDesign .fstDesignChild .toolUses .topIcon{
     width: 100%;
     border-bottom: 1px solid rgba(128, 128, 128, 0.493);
+    display: flex;
+    gap: 5px;
+    justify-content: flex-start;
 }
 .fstDesign .fstDesignChild .toolUses .topIcon .Cooding{
-    width: 44px;
+    width: 40px;
     padding-left: 25px;
+}
+.fstDesign .fstDesignChild .toolUses .topIcon h3{
+    color: #2d2e32;
+    font-family: 'Poppins',sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
 }
 .fstDesign .fstDesignChild .toolUses .toolsDiv{
    width: 100%;

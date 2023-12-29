@@ -6,6 +6,7 @@ import './SettingAlert.css'
 import { ReactComponent as Sun } from "../images/Sun.svg";
 import { ReactComponent as Moon } from "../images/Moon.svg";
 import { useTheme } from '../ThemeContext';
+import { Link } from 'react-router-dom';
 
 const SettingAlert = ({handleClose}) => {
     const { theme, toggleTheme } = useTheme();
@@ -75,10 +76,9 @@ const SettingAlert = ({handleClose}) => {
                     <button disabled>Beta</button>
                 </div>
                 <div className='settingVersionLinks'>
-                    <a href='/#' onClick={()=>{window.open('https://google.com','_blank')}}>Clear Cache</a>
-                    <a href='/#' onClick={()=>{window.open('https://google.com','_blank')}}>Check Update</a>
-                    <a href='/#' onClick={()=>{window.open('https://google.com','_blank')}}>Manual Download</a>
-                    <a href='/#' onClick={()=>{window.open('https://google.com','_blank')}}>Project Home</a>
+                    <Link to='/'>Project Home</Link>
+                    <a href='/#' onClick={()=>{window.open('https://github.com/achrafelmakaoui/redis-manger-web-platform','_blank')}}>Check Update</a>
+                    <a href='/#' onClick={()=>{window.open('https://github.com/achrafelmakaoui/redis-manger-web-platform','_blank')}}>Manual Download</a>
                 </div>
             </div>
         </div>

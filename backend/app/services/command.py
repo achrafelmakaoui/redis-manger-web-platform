@@ -18,7 +18,7 @@ class Command:
             connection_info = redis_conn.connection.get_connection_kwargs()
 
             if app != None:
-                app.logger.info(f'{connection_info["client_name"]}: {command}')
+                app.logger.info(f'{connection_info["client_name"]} - {command}')
 
         except Exception as e:
                 response = jsonify({"error": str(e)})

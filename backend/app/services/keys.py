@@ -18,7 +18,7 @@ class Keys:
                 connection_info = redis_conn.connection.get_connection_kwargs()
 
                 if app != None:
-                    app.logger.info(f'{connection_info["client_name"]}: set {key} {value}')
+                    app.logger.info(f'{connection_info["client_name"]} - set {key} {value}')
             else:
                 responce = jsonify({'error': "failed"})
 
@@ -42,7 +42,7 @@ class Keys:
                 connection_info = redis_conn.connection.get_connection_kwargs()
 
                 if app != None:
-                    app.logger.info(f'{connection_info["client_name"]}: delete {key}')
+                    app.logger.info(f'{connection_info["client_name"]} - delete {key}')
             else:
                 responce = jsonify({'error': "failed"})
 
@@ -66,7 +66,7 @@ class Keys:
                 responce = jsonify({"key":key, "value":str(responce)})
                 connection_info = redis_conn.connection.get_connection_kwargs()
                 if app != None:
-                    app.logger.info(f'{connection_info["client_name"]}: get {key}')
+                    app.logger.info(f'{connection_info["client_name"]} - get {key}')
 
             else:
                 responce = jsonify({'error': "failed"})

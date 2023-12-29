@@ -27,14 +27,14 @@ const Dash = () => {
   const [keyPage, setkeyPage] = useState(false);
   const [connections, setconnections] = useState([]);
   const [connDetStates, setConnDetStates] = useState(Array(connections.length).fill(false));
-  const [selectedDb, setSelectedDb] = useState();
+  const [selectedDb, setSelectedDb] = useState(0);
   const [keys, setKeys] = useState([]);
   const location = useLocation();
 
   const handelChooseDb = async (e) => {
     try {
       setSelectedDb(e.target.value)
-      const response = await axios.post(`http://192.168.1.105:5000/change_db`, {
+      const response = await axios.post(`http://192.168.1.102:5000/change_db`, {
         db: 0 || parseInt(e.target.value),
       });
       setKeys(response.data.response);
@@ -49,7 +49,7 @@ const Dash = () => {
 
   useEffect(() => {
     const getConnections = async () => {  
-      let url = "http://192.168.1.105:5000/connections";
+      let url = "http://192.168.1.102:5000/connections";
       try {
           const res = await axios.get(url);
           setconnections(res.data);
@@ -58,14 +58,14 @@ const Dash = () => {
       }
     };
     getConnections();
-  },[]);
+  },[connections]);
 
 
   const handelConnect = async () => {
     const currentClientName = location.pathname.split("/")[2];
     setTimeout(async () => {
       try {
-        const response = await axios.post(`http://192.168.1.105:5000/connect`, {
+        const response = await axios.post(`http://192.168.1.102:5000/connect`, {
           host:'127.0.0.1', 
           port:6379, 
           client_name: currentClientName
@@ -84,7 +84,6 @@ const Dash = () => {
     setFstDesignPage(false);
     setRedisPage(false);
   }
-
   // new key
   const  newKeyHandelClick = () => {
       setNewKeyAlert(true)
@@ -122,6 +121,7 @@ const Dash = () => {
       setRedisPage(true);
       setFstDesignPage(false);
       setkeyPage(false);
+      setCli(false);
     }
   };
   const handelShowKey = () =>  {
@@ -129,6 +129,9 @@ const Dash = () => {
       setFstDesignPage(false);
       setkeyPage(true);
   }
+  const handelLoadAll = () =>  {
+    handelChooseDb({ target: { value: selectedDb } });
+}
   return (
     <div className='ConPg'>
       <div className='fullCon'>
@@ -201,7 +204,7 @@ const Dash = () => {
                   </div>
                   <div className='ConnDetRow4'>
                       <button className='LoadData'>Load More</button>
-                      <button className='AllData'>Load All</button>
+                      <button className='AllData' onClick={handelLoadAll}>Load All</button>
                   </div>
               </div>
               )}

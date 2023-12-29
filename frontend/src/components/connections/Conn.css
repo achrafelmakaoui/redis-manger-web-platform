@@ -50,10 +50,10 @@
 }
 
 .listConn{
-    padding: 15px 0px 15px 0px;
+    padding: 15px 0px 0px 0px;
     border-top: 1px solid rgba(128, 128, 128, 0.349);
-    /* height: 98vh; */
-    /* overflow-y: scroll; */
+    height: 90vh;
+    overflow-y: hidden;
 }
 .listConn a {
     text-decoration: none;
@@ -83,10 +83,12 @@
     
 } */
 .listConn .lstMap .connName h4{
-    font-family: "GilroyMedium";
-    font-size: 15px;
     color: var(--conn_name_color);
     text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1rem;
 }
 .listConn .lstMap .connTaches{
     display: flex;
