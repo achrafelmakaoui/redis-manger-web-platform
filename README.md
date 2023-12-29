@@ -5,4 +5,5 @@ Our Landing Page 🚀 :
 <br/>
 <img src='./frontend/src/components/images/redisLandingPage.png'/>
 Some Détails 📊 :
+<br/>
 <img src='./frontend/src/components/images/redisConnectionsDetails.png'/>
