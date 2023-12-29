@@ -16,7 +16,7 @@ const Keycrd = () => {
         const handelGetKey = async () => {
             const currentKeyName = location.pathname.split("/")[3];
             try {
-                const response = await axios.get(`http://192.168.1.105:5000/key_value/${currentKeyName}`, {
+                const response = await axios.get(`http://192.168.1.102:5000/key_value/${currentKeyName}`, {
                     headers: {
                         'Content-Type': 'application/json',
                     },
@@ -34,7 +34,7 @@ const Keycrd = () => {
   const handleSubmit = async () => {
     const currentKeyName = location.pathname.split("/")[3];
         try {
-          const response = await axios.post(`http://192.168.1.105:5000/keys`, {
+          const response = await axios.post(`http://192.168.1.102:5000/keys`, {
             key: currentKeyName, 
             value:key
           });

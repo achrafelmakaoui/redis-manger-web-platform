@@ -15,22 +15,22 @@ const NewConAlert = ({ handleClose }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          const response = await axios.post(`http://192.168.1.105:5000/connect`, {
+          const response = await axios.post(`http://192.168.1.102:5000/connect`, {
             host: host, 
             port:parseInt(port), 
             client_name: connName
           });
           console.log(response.data);
-          handleClose()
+          handleClose();
         } catch (error) {
           console.error(error);
         }
       };
       const handleCancel = (event) => {
         event.preventDefault();
-        // Add any additional logic for canceling here
-        handleClose(); // Close the modal or handle cancellation as needed
+        handleClose();
       };
+      
   return (
     <div className='motionDiv'>
         <motion.div
@@ -51,11 +51,11 @@ const NewConAlert = ({ handleClose }) => {
         <div className='itemsConn'>
           <div className='itemConn1'>
             <label><mark style={{color:'red',backgroundColor:'transparent'}}>*</mark> Host</label>
-            <input type='text' placeholder='127.0.0.1' value={host} onChange={(event) => setHost(event.target.value)}/>
+            <input type='text' placeholder='127.0.0.1' value={host} onChange={(event) => setHost(event.target.value)} required/>
           </div>
           <div className='itemConn2'>
             <label><mark style={{color:'red',backgroundColor:'transparent'}}>*</mark> Port</label>
-            <input type='number' placeholder='6379' value={port} onChange={(event) => setPort(event.target.value)}/>
+            <input type='number' placeholder='6379' value={port} onChange={(event) => setPort(event.target.value)} required/>
           </div>
           <div className='itemConn3'>
             <label>Password</label>
@@ -67,7 +67,7 @@ const NewConAlert = ({ handleClose }) => {
           </div>
           <div className='itemConn5'>
             <label>Connection Name</label>
-            <input type='text' placeholder='Connection name' value={connName} onChange={(event) => setConnName(event.target.value)}/>
+            <input type='text' placeholder='Connection name' value={connName} onChange={(event) => setConnName(event.target.value)} required/>
           </div>
           <div className='itemConn6'>
             <label>Separator</label>

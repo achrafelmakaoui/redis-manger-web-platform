@@ -33,7 +33,7 @@ const Cli = () => {
         try {
             const modifiedCommand = Command === 'MAGNET' ? 'PING' : Command;
     
-            const response = await fetch('http://192.168.1.105:5000/command', {
+            const response = await fetch('http://192.168.1.102:5000/command', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -53,6 +53,7 @@ const Cli = () => {
     
                 setCommandCli(modifiedResult);
                 console.log(modifiedResult);
+                console.log(CommandCli);
                 dispatch(addCommand({Command, modifiedResult}));
                 setCommand([])
             }

@@ -15,6 +15,7 @@ import { faServer,faDatabase,faChartColumn} from '@fortawesome/free-solid-svg-ic
 import { faTrashCan,faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 import AlertEditConn from '../AlertEditConn/AlertEditConn';
 import {
   Chart as ChartJS,
@@ -32,10 +33,11 @@ const RedisDash = () => {
   const [EditAlert,setEditAlert]=useState(false);
   const [Data,setData]=useState(null);
   const [DbState,setDbState]=useState({});
+  const navigate=useNavigate();
 
   useEffect(() => {
     const getData = async () => {  
-      let url = "http://192.168.1.105:5000/monitor";
+      let url = "http://192.168.1.102:5000/monitor";
       try {
           const res = await axios.get(url);
           setData(res.data);
@@ -48,7 +50,7 @@ const RedisDash = () => {
   },[]);
   useEffect(() => {
     const getDbState = async () => {  
-      let url = "http://192.168.1.105:5000/dbs_stats";
+      let url = "http://192.168.1.102:5000/dbs_stats";
       try {
           const res = await axios.get(url);
           setDbState(res.data);
@@ -58,7 +60,7 @@ const RedisDash = () => {
       }
     };
     getDbState();
-  },[]);
+  },[DbState]);
 
     const location = useLocation();
     ChartJS.register(
@@ -84,20 +86,20 @@ const RedisDash = () => {
       },
       scales: {
         x: {
-          beginAtZero: true, // You can customize this based on your needs
+          beginAtZero: true, 
           title: {
             display: true,
             text: 'List Of Dbs',
           },
         },
         y: {
-          beginAtZero: true, // Set to true if you want the scale to start at zero
+          beginAtZero: true, 
           title: {
             display: true,
             text: 'Number of Keys',
           },
           ticks: {
-            stepSize: 1, // Customize based on your needs
+            stepSize: 1, 
           },
         },
       },
@@ -121,13 +123,12 @@ const RedisDash = () => {
               DbState.db7 ? DbState.db7.keys || 0 : 0,
               DbState.db8 ? DbState.db8.keys || 0 : 0,
               DbState.db9 ? DbState.db9.keys || 0 : 0,
-              DbState.db10 ? DbState.db11.keys || 0 : 0,
+              DbState.db10 ? DbState.db10.keys || 0 : 0,
               DbState.db11 ? DbState.db11.keys || 0 : 0,
               DbState.db12 ? DbState.db12.keys || 0 : 0,
               DbState.db13 ? DbState.db13.keys || 0 : 0,
               DbState.db14 ? DbState.db14.keys || 0 : 0,
               DbState.db15 ? DbState.db15.keys || 0 : 0,
-              // Repeat similar structures for other datasets
             ],
             borderColor: 'rgb(52, 52, 203)',
             backgroundColor: 'rgb(52, 52, 203)',
@@ -145,15 +146,15 @@ const RedisDash = () => {
               DbState.db7 ? DbState.db7.expires || 0 : 0,
               DbState.db8 ? DbState.db8.expires || 0 : 0,
               DbState.db9 ? DbState.db9.expires || 0 : 0,
-              DbState.db10 ? DbState.db11.expires || 0 : 0,
+              DbState.db10 ? DbState.db10.expires || 0 : 0,
               DbState.db11 ? DbState.db11.expires || 0 : 0,
               DbState.db12 ? DbState.db12.expires || 0 : 0,
               DbState.db13 ? DbState.db13.expires || 0 : 0,
               DbState.db14 ? DbState.db14.expires || 0 : 0,
               DbState.db15 ? DbState.db15.expires || 0 : 0,
-            ], // Replace with actual values for DB2
-            borderColor: 'rgb(157,55,55)',
-            backgroundColor: 'rgb(157,55,55)',
+            ],
+            borderColor: 'rgba(232, 69, 69, 0.624)',
+            backgroundColor: 'rgba(232, 69, 69, 0.624)',
           },
           {
             label: 'Avg TTL',
@@ -168,13 +169,13 @@ const RedisDash = () => {
               DbState.db7 ? DbState.db7.avg_ttl || 0 : 0,
               DbState.db8 ? DbState.db8.avg_ttl || 0 : 0,
               DbState.db9 ? DbState.db9.avg_ttl || 0 : 0,
-              DbState.db10 ? DbState.db11.avg_ttl || 0 : 0,
+              DbState.db10 ? DbState.db10.avg_ttl || 0 : 0,
               DbState.db11 ? DbState.db11.avg_ttl || 0 : 0,
               DbState.db12 ? DbState.db12.avg_ttl || 0 : 0,
               DbState.db13 ? DbState.db13.avg_ttl || 0 : 0,
               DbState.db14 ? DbState.db14.avg_ttl || 0 : 0,
               DbState.db15 ? DbState.db15.avg_ttl || 0 : 0,
-            ], // Replace with actual values for DB3
+            ],
             backgroundColor: 'rgb(7,216,7)',
             borderColor: 'rgb(7,216,7)',
           },
@@ -186,6 +187,7 @@ const RedisDash = () => {
             data: { client_name: location.pathname.split("/")[2] }
           });
           console.log(response.data);
+          navigate('/')
         } catch (error) {
           console.error(error);
         }
@@ -210,7 +212,7 @@ const RedisDash = () => {
           </div>
         </div>
         <div className='RedisDashRow1'>
-        {Data && ( // Check if Data is not null before accessing properties
+        {Data && (
               <>
             <div className='Row1Card1'>
                 <div className='Card1Header'>

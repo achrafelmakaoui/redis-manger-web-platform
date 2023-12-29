@@ -16,7 +16,7 @@ const DelKeyAlert = ({ handleClose }) => {
     const handelDelKey = async () => {
         const currentKeyName = location.pathname.split("/")[3];
         try {
-            const response = await axios.delete(`http://192.168.1.105:5000/keys`, {
+            const response = await axios.delete(`http://192.168.1.102:5000/keys`, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -26,7 +26,7 @@ const DelKeyAlert = ({ handleClose }) => {
             });
             console.log(response);
             handleClose();
-            navigate('/Dashboard');
+            navigate('/');
         } catch (error) {
             console.error(error);
         }

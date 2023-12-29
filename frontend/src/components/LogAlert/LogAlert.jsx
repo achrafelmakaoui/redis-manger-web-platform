@@ -7,52 +7,47 @@ import axios from 'axios';
 
 
 const LogAlert = ({handleClose}) => {
-     const [logs,setLogs]=useState([])
-     // useEffect(() => {
-     //      const getLogs = async () => {  
-     //        let url = "http://192.168.1.105:5000/logs";
-     //        try {
-     //            const res = await axios.get(url);
-     //            setLogs(res.data);
-     //            console.log(res.data)
-     //        } catch (err) {
-     //            console.log(err);
-     //        }
-     //      };
-     //      getLogs();
-     //    },[]);
-     // const logRegex = /^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) - (\w+) - (\w+\[\d+\]) - (\w+)$/;
-     const logRegex = /^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) - ([\w\s-]+) - (\w+\[\d+\]|\w+) - (\w+)$/;
+    const [logs,setLogs]=useState([]);
+    useEffect(() => {
+      const getLogs = async () => {
+        let url = "http://192.168.1.102:5000/logs";
+        try {
+          const res = await axios.get(url);
+          console.log(res.data);
 
-     useEffect(() => {
-     const getLogs = async () => {  
-          let url = "http://192.168.1.105:5000/logs";
-          try {
-               const res = await axios.get(url);
-               setLogs(res.data);
-               console.log(res.data);
+          const formattedLogs = res.data.map((logEntry, index) => {
+            const logParts = logEntry.split(' - ');
 
-               // Apply the regular expression to each log entry
-               res.data.forEach(logEntry => {
-                    const match = logEntry.match(logRegex);
+            if (logParts.length) {
+              const time = logParts[0];
+              const connName = logParts[1];
+              const dbAndCommand = logParts[2].split(' ');
+              const command = dbAndCommand[0];
+              const db = dbAndCommand.slice(1).join(' ');
 
-                    if (match) {
-                         const [, time, command, db, connName] = match;
-                         console.log("Time:", time);
-                         console.log("Command:", command);
-                         console.log("DB:", db);
-                         console.log("connName:", connName);
-                    } else {
-                         console.error("Invalid log entry format:", logEntry);
-                    }
-               });
-          } catch (err) {
-               console.log(err);
-          }
-     };
+              console.log(`Log Entry ${index + 1}:`);
+              console.log("Time:", time);
+              console.log("Connection Name:", connName);
+              console.log("Command:", command);
+              console.log("DB:", db);
 
-     getLogs();
-     }, []);
+              return { time, connName, command, db };
+            } else {
+              console.error(`Invalid log entry format for entry ${index + 1}:`, logEntry);
+              return null;
+            }
+          });
+
+        const filteredLogs = formattedLogs.filter(log => log !== null);
+
+        setLogs(filteredLogs);
+      } catch (err) {
+        console.error(err);
+      }
+      };
+      getLogs();
+    }, []);
+
 
   return (
     <div className='LogMotionDiv'>
@@ -73,7 +68,7 @@ const LogAlert = ({handleClose}) => {
         <div className='LogItems'>
             <div className='LogCli'>
                <div className='LogData'>
-                    <span className='Time'>21:15:02</span>
+                    <span className='Time'>21:52:30</span>
                     <span className='Separatore1'>-</span>
                     <span className='ConnName'>[Test]</span>
                     <span className='Separatore2'>-</span>
@@ -83,7 +78,13 @@ const LogAlert = ({handleClose}) => {
                </div>
                {logs.map((log,index)=>(
                     <div className='LogData'>
-                         <span className='Time'>{log}</span>
+                         <span className='Time'>{log.time}</span>
+                         <span className='Separatore1'>-</span>
+                         <span className='ConnName'>[{log.connName}]</span>
+                         <span className='Separatore2'>-</span>
+                         <span className='Req'>{log.command}</span>
+                         <span className='ReqDec'>{log.db}</span>
+                         <span className='Ping'>[1.85ms]</span>
                     </div>
                ))}
             </div>

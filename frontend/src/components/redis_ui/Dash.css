@@ -68,7 +68,7 @@
 }
 .fullCon{
     width: fit-content;
-    height: 96vh;
+    /* height: 90vh; */
     border-right: 1px solid rgba(128, 128, 128, 0.349);
     padding-right: 10px;
     padding-top: 7px;
