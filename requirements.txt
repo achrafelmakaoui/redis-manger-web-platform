@@ -1,0 +1,15 @@
+async-timeout==4.0.3
+certifi==2023.11.17
+charset-normalizer==3.3.2
+click @ file:///C:/b/abs_f9ihnt72pu/croot/click_1698129847492/work
+colorama @ file:///C:/b/abs_a9ozq0l032/croot/colorama_1672387194846/work
+Flask @ file:///C:/b/abs_ef16l83sif/croot/flask_1671217367534/work
+Flask-Cors==4.0.0
+idna==3.6
+itsdangerous @ file:///tmp/build/80754af9/itsdangerous_1621432558163/work
+Jinja2 @ file:///C:/b/abs_7cdis66kl9/croot/jinja2_1666908141852/work
+MarkupSafe @ file:///C:/ci/markupsafe_1654508036328/work
+redis==5.0.1
+requests==2.31.0
+urllib3==2.1.0
+Werkzeug @ file:///C:/b/abs_8578rs2ra_/croot/werkzeug_1679489759009/work
