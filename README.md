@@ -4,5 +4,5 @@ Redis, commonly referred to as a "data structure server," is a powerful tool for
 Our Landing Page 🚀 :
 <br/>
 <img src='./frontend/src/components/images/redisLandingPage.png'/>
-Some Détails 📊:
+Some Détails 📊 :
 <img src='./frontend/src/components/images/redisConnectionsDetails.png'/>
