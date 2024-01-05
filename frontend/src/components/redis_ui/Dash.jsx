@@ -34,7 +34,7 @@ const Dash = () => {
   const handelChooseDb = async (e) => {
     try {
       setSelectedDb(e.target.value)
-      const response = await axios.post(`http://192.168.1.102:5000/change_db`, {
+      const response = await axios.post(`http://localhost:5000/change_db`, {
         db: 0 || parseInt(e.target.value),
       });
       setKeys(response.data.response);
@@ -49,7 +49,7 @@ const Dash = () => {
 
   useEffect(() => {
     const getConnections = async () => {  
-      let url = "http://192.168.1.102:5000/connections";
+      let url = "http://localhost:5000/connections";
       try {
           const res = await axios.get(url);
           setconnections(res.data);
@@ -65,7 +65,7 @@ const Dash = () => {
     const currentClientName = location.pathname.split("/")[2];
     setTimeout(async () => {
       try {
-        const response = await axios.post(`http://192.168.1.102:5000/connect`, {
+        const response = await axios.post(`http://localhost:5000/connect`, {
           host:'127.0.0.1', 
           port:6379, 
           client_name: currentClientName
@@ -83,6 +83,7 @@ const Dash = () => {
     setCli(true);
     setFstDesignPage(false);
     setRedisPage(false);
+    setkeyPage(false);
   }
   // new key
   const  newKeyHandelClick = () => {
@@ -128,7 +129,18 @@ const Dash = () => {
       setRedisPage(false);
       setFstDesignPage(false);
       setkeyPage(true);
+      setCli(false);
   }
+  const handelFstPage = () =>  {
+    setRedisPage(false);
+    setFstDesignPage(true);
+    setkeyPage(false);
+}
+  const handelRemoveKeyPage = () =>  {
+    setRedisPage(true);
+    setFstDesignPage(false);
+    setkeyPage(false);
+}
   const handelLoadAll = () =>  {
     handelChooseDb({ target: { value: selectedDb } });
 }
@@ -212,10 +224,10 @@ const Dash = () => {
         ))}
         </div>
       </div>
-      {keyPage && <Keycrd/>}
+      {keyPage && <Keycrd handleClose={handelRemoveKeyPage}/>}
       {Clii && <Cli text='Redis Magnet'/>}
       {NewKeyAlert && <NewKeyAlertt handleClose={handleClickXMarkNewKey}/>}
-      {RedisPage && <RedisDash/>}
+      {RedisPage && <RedisDash handleClose={handelFstPage}/>}
       {FstDesignPage && <FstDesign handelClick={handelClick}/>}
       {Alert && <NewConnAlert handleClose={handleClickXMark} oneNewConnection={connections=>setconnections(currentConnection=>[connections,currentConnection])}/>}
       {Alert2 && <SettingAlert handleClose={handleClickSettingXMark}/>}

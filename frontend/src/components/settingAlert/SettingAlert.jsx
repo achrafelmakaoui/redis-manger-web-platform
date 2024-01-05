@@ -83,7 +83,7 @@ const SettingAlert = ({handleClose}) => {
             </div>
         </div>
         <div className='butnReq'>
-          <button className='cacelBtn'>Cancel</button>
+          <button className='cacelBtn' onClick={handleClose}>Cancel</button>
           <button className='okBtn'>OK</button>
         </div>
       </motion.div>

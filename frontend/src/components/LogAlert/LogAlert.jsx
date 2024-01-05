@@ -10,7 +10,7 @@ const LogAlert = ({handleClose}) => {
     const [logs,setLogs]=useState([]);
     useEffect(() => {
       const getLogs = async () => {
-        let url = "http://192.168.1.102:5000/logs";
+        let url = "http://localhost:5000/logs";
         try {
           const res = await axios.get(url);
           console.log(res.data);
@@ -95,7 +95,7 @@ const LogAlert = ({handleClose}) => {
             </div>
         </div>
         <div className='butnReq'>
-          <button className='cacelBtn'>Cancel</button>
+          <button className='cacelBtn' onClick={handleClose}>Cancel</button>
           <button className='clearBtn'>Clear</button>
         </div>
       </motion.div>

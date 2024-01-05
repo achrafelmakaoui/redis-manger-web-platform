@@ -281,7 +281,7 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-color: #fdfdfdaa;
+    background-color: #e6e6ee95;
     box-shadow: 0px 2px 12px 0px #00000062;
 }
 .fstDesign .fstDesignChild .toolUses .toolsDiv .frontTools .react img{
@@ -297,8 +297,8 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    /* background-color: #fdfdfdaa; */
-    background-color: #fdfdfdaa;
+    /* background-color: #e6e6ee95; */
+    background-color: #e6e6ee95;
     box-shadow: 0px 2px 12px 0px #00000062;
 }
 .fstDesign .fstDesignChild .toolUses .toolsDiv .frontTools .html img{
@@ -314,7 +314,7 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background-color: #fdfdfdaa;
+    background-color: #e6e6ee95;
     box-shadow: 0px 2px 12px 0px #00000062;
 }
 .fstDesign .fstDesignChild .toolUses .toolsDiv .frontTools .css img{
@@ -339,7 +339,7 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-color: #fdfdfdaa;
+    background-color: #e6e6ee95;
     box-shadow: 0px 2px 12px 0px #00000062;
 }
 .fstDesign .fstDesignChild .toolUses .toolsDiv .backTools .redis img{
@@ -352,7 +352,7 @@
     width: 70px;
     height:70px;
     border-radius: 50%;
-    background-color: #fdfdfdaa;
+    background-color: #e6e6ee95;
     box-shadow: 0px 2px 12px 0px #00000062;
 }
 .fstDesign .fstDesignChild .toolUses .toolsDiv .backTools .flask img{
@@ -365,7 +365,7 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background-color: #fdfdfdaa;
+    background-color: #e6e6ee95;
     box-shadow: 0px 2px 12px 0px #00000062;
 }
 .fstDesign .fstDesignChild .toolUses .toolsDiv .backTools .redux img{

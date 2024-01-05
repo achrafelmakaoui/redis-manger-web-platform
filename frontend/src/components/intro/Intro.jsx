@@ -37,16 +37,16 @@ const Intro = () => {
       },
     });
   
-    tl.fromTo(hero.current, 1, { height: '0%' }, { height: '100%', ease: Power2.easeInOut })
-      .fromTo(hero.current, 1.2, { width: '100%' }, { width: '80%', ease: Power2.easeInOut })
-      .fromTo(slider.current, 1.3, { x: '-100%', opacity: 1 }, { x: '0%', ease: Power2.easeInOut }, '-=1.2');
+    tl.fromTo(hero.current, 0.4, { height: '0%' }, { height: '100%', ease: Power2.easeInOut })
+      .fromTo(hero.current, 0.6, { width: '100%' }, { width: '80%', ease: Power2.easeInOut })
+      .fromTo(slider.current, 1.2, { x: '-100%', opacity: 1 }, { x: '0%', ease: Power2.easeInOut }, '-=1.2');
   }, [theme, DarkAnimationRef, animationRef, loodingRef]);
   
   // Set timeout for the loading animation
   setTimeout(() => {
     document.body.classList.add('loodingOpacity');
     loodingRef.current.pause();
-  }, 5200);
+  }, 5000);
   
   // Set timeout for navigating to '/Dashboard'
   setTimeout(() => {

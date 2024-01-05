@@ -1,0 +1,80 @@
+.AlertDes{
+    position: absolute;
+    position: fixed;
+    display: grid;
+    top: 0;
+    right: 0;
+    width: 30%;
+    content: normal;
+    height: 65px;
+    padding: 0px 20px 0px 0px;
+    margin-top: 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    background: #17950b86;
+    border: 1px solid rgba(255, 255, 255, 0.852);
+    border-bottom-color:transparent;
+    box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.100);
+    background: linear-gradient(90deg, rgba(23, 149, 11, 0.700) 0%, rgba(23, 149, 11, 0.650) 20%,rgba(23, 149, 11, 0.600) 40%, rgba(255,255,255,1) 100%);
+}
+.AlertDes .AlertContent{
+    display: flex;
+    height: 100%;
+    flex: 3;
+    padding: 15px 10px 15px 10px;
+    gap: 15px;
+}
+.AlertDes .CircleIconAlert{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    background-color: #fffffff1;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.090);
+}
+.AlertDes .CircleIconAlert .succIcon{
+    font-size: 0.90rem;
+    color: rgba(23, 149, 11, 0.833);
+}
+.AlertContent .TextAlert{
+    width: 90%;
+    margin-top: -15px;
+}
+.AlertContent .TextAlert h2{
+    color: #ffffff;
+    font-family: Poppins,sans-serif;
+    font-size: 0.95rem;
+}
+.AlertContent .TextAlert h4{
+    color: #ffffffef;
+    font-family: Poppins,sans-serif;
+    font-size: 0.80rem;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-top: -8px;
+}
+.AlertContent .CloseAlertIcon svg{
+    cursor: pointer;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    justify-content: flex-end;
+    align-items: self-end;
+    height: 3px; /* Adjust the height of the line */
+    background-color: green;
+    width: 0;
+    animation: progressBarAnimation 5s linear forwards; /* Match the timeout value in milliseconds */
+  }
+
+  @keyframes progressBarAnimation {
+    100% {
+      width: 100%;
+    }
+  }
