@@ -12,7 +12,7 @@ const NewKeyAlert = ({ handleClose }) => {
 
   const handleSubmit = async () => {
         try {
-          const response = await axios.post(`http://192.168.1.102:5000/keys`, {
+          const response = await axios.post(`http://localhost:5000/keys`, {
             key: Key, 
             value:Value
           });

@@ -29,7 +29,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
-const RedisDash = () => {
+const RedisDash = ({ handleClose }) => {
   const [EditAlert,setEditAlert]=useState(false);
   const [Data,setData]=useState(null);
   const [DbState,setDbState]=useState({});
@@ -37,7 +37,7 @@ const RedisDash = () => {
 
   useEffect(() => {
     const getData = async () => {  
-      let url = "http://192.168.1.102:5000/monitor";
+      let url = "http://localhost:5000/monitor";
       try {
           const res = await axios.get(url);
           setData(res.data);
@@ -50,7 +50,7 @@ const RedisDash = () => {
   },[]);
   useEffect(() => {
     const getDbState = async () => {  
-      let url = "http://192.168.1.102:5000/dbs_stats";
+      let url = "http://localhost:5000/dbs_stats";
       try {
           const res = await axios.get(url);
           setDbState(res.data);
@@ -187,7 +187,8 @@ const RedisDash = () => {
             data: { client_name: location.pathname.split("/")[2] }
           });
           console.log(response.data);
-          navigate('/')
+          handleClose()
+          navigate('/Dashboard')
         } catch (error) {
           console.error(error);
         }

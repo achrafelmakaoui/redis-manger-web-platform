@@ -237,6 +237,7 @@
 .ConnDet .ConnDetRow3 h4{
     font-family: "GilroyMedium";
     color: var(--conn_name_color);
+    font-weight: 500;
 }
 .ConnDet .ConnDetRow4{
     display: flex;

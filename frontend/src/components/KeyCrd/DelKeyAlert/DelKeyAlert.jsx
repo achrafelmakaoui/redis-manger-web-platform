@@ -5,10 +5,8 @@ import './DelKeyAlert.css'
 import { useLocation } from "react-router-dom";
 import axios from 'axios';
 import { motion } from "framer-motion";
-import { useNavigate } from 'react-router-dom';
 
-const DelKeyAlert = ({ handleClose }) => {
-    const navigate = useNavigate();
+const DelKeyAlert = ({ handleClose, handleClose2 }) => {
     const location = useLocation();
     const currentKeyName = location.pathname.split("/")[3];
     // const currentConnName = location.pathname.split("/")[2];
@@ -16,7 +14,7 @@ const DelKeyAlert = ({ handleClose }) => {
     const handelDelKey = async () => {
         const currentKeyName = location.pathname.split("/")[3];
         try {
-            const response = await axios.delete(`http://192.168.1.102:5000/keys`, {
+            const response = await axios.delete(`http://localhost:5000/keys`, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -26,7 +24,7 @@ const DelKeyAlert = ({ handleClose }) => {
             });
             console.log(response);
             handleClose();
-            navigate('/');
+            handleClose2()
         } catch (error) {
             console.error(error);
         }

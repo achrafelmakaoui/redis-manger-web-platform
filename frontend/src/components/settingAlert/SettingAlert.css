@@ -243,6 +243,11 @@
 .settingItems .settingVersion .settingVersionTit button{
   font-family: "GilroyMedium";
   color: var(--conn_name_color);
+  background-color: #406de0;
+  padding: 1px 4px 1px 4px;
+  border: 0;
+  border-radius: 2px;
+  outline: 0;
   font-size: 14px;
   height: 20px;
 }
